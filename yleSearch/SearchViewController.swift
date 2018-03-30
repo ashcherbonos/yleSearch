@@ -10,9 +10,10 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-    let cellIdentifier: String = "SearchResultCell"
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    let cellIdentifier: String = "SearchResultCell"
+    var searchController : UISearchController!
+    
     @IBOutlet weak var tableView: UITableView!
     
     lazy var dismissKeyboardOnTapRecognizer = UITapGestureRecognizer(target:self, action: #selector(dismissKeyboard))
@@ -21,7 +22,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        makeSearchBarInNavigationBar()
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,12 +45,59 @@ class SearchViewController: UIViewController {
 
 // MARK: - Search Bar
 
-extension SearchViewController: UISearchBarDelegate {
+//extension SearchViewController: UISearchBarDelegate {
+//
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        dismissKeyboard()
+//        guard let searchBarText = searchBar.text else { return }
+//        let _ = QueryService(searchTerm: searchBarText) { results in
+//            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//            guard let results = results else { return }
+//            self.programms = results
+//            self.tableView.reloadData()
+//        }
+//    }
+//
+//    @objc func dismissKeyboard() {
+//        searchBar.resignFirstResponder()
+//    }
+//
+//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        view.addGestureRecognizer(dismissKeyboardOnTapRecognizer)
+//    }
+//
+//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//        view.removeGestureRecognizer(dismissKeyboardOnTapRecognizer)
+//    }
+//}
+
+
+extension SearchViewController:  UISearchControllerDelegate, UISearchBarDelegate {
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    @objc func dismissKeyboard() {
+        searchController.resignFirstResponder()
+    }
+    
+    private func makeSearchBarInNavigationBar() {
+        self.searchController = UISearchController(searchResultsController:  nil)
+        
+        self.searchController.delegate = self
+        self.searchController.searchBar.delegate = self
+        
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.dimsBackgroundDuringPresentation = true
+        
+        self.navigationItem.titleView = searchController.searchBar
+        
+        self.definesPresentationContext = true
+        
+        
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         dismissKeyboard()
-        guard let searchBarText = searchBar.text else { return }
-        let _ = QueryService(searchTerm: searchBarText) { results in
+        guard let searchText = searchBar.text else { return }
+        let _ = QueryService(searchTerm: searchText) { results in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             guard let results = results else { return }
             self.programms = results
@@ -57,17 +105,6 @@ extension SearchViewController: UISearchBarDelegate {
         }
     }
     
-    @objc func dismissKeyboard() {
-        searchBar.resignFirstResponder()
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        view.addGestureRecognizer(dismissKeyboardOnTapRecognizer)
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        view.removeGestureRecognizer(dismissKeyboardOnTapRecognizer)
-    }
 }
 
 // MARK: - Table View

@@ -19,23 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Search programs on YLE" translatesAutoresizingMaskIntoConstraints="NO" id="euE-yg-akI">
-                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="c4o-1c-tpX"/>
-                                </constraints>
-                                <color key="barTintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <scopeButtonTitles>
-                                    <string>Title</string>
-                                    <string>Title</string>
-                                </scopeButtonTitles>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="RD2-YN-3hc"/>
-                                </connections>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="88F-Il-5ZM">
-                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultCell" textLabel="VX0-8c-bY0" detailTextLabel="F7a-9u-oOy" style="IBUITableViewCellStyleSubtitle" id="dsW-78-nAy">
@@ -72,21 +57,16 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="88F-Il-5ZM" secondAttribute="trailing" id="ACs-GF-klM"/>
-                            <constraint firstItem="euE-yg-akI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="E3M-QL-vbf"/>
-                            <constraint firstItem="88F-Il-5ZM" firstAttribute="top" secondItem="euE-yg-akI" secondAttribute="bottom" id="Sya-QR-aMM"/>
+                            <constraint firstItem="88F-Il-5ZM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Oby-IZ-G8M"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="88F-Il-5ZM" secondAttribute="bottom" id="bup-2x-x4w"/>
-                            <constraint firstItem="euE-yg-akI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kZ8-Vp-bAH"/>
                             <constraint firstItem="88F-Il-5ZM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tnb-ju-Yss"/>
-                            <constraint firstAttribute="trailing" secondItem="euE-yg-akI" secondAttribute="trailing" id="yRN-Xg-ecR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Job-xh-Dal"/>
                     <connections>
-                        <outlet property="searchBar" destination="euE-yg-akI" id="ZSq-FA-rlv"/>
                         <outlet property="tableView" destination="88F-Il-5ZM" id="w40-cQ-5Mv"/>
                     </connections>
                 </viewController>
@@ -200,6 +180,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Slj-yW-hfs">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.18681269880000001" green="0.38156944510000002" blue="0.55298238990000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
