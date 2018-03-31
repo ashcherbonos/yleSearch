@@ -16,24 +16,35 @@ extension Optional where Wrapped == URLResponse  {
 
 class QueryService {
     
-    init(searchTerm: String, completion: @escaping ([TvProgramm]?) -> ()){
-        guard let url = makeURL(from: searchTerm) else { return }
-        print(url)
+    private let completion: () -> ()
+    private let searchTerm: String
+    private var programs: [TvProgramm]
+    public var result: [TvProgramm] { return programs }
+    
+    private var searchOffset: Int {
+        return programs.count
+    }
+    
+    init(searchTerm: String, completion: @escaping () -> ()){
+        self.completion = completion
+        self.searchTerm = searchTerm
+        self.programs = []
+    }
+    
+    public func searchForNext(quantityOf limit: Int) {
+        guard let url = makeURL(from: searchTerm, searchLimit: limit) else { return }
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil, response.statusCodeIsOK, let data = data else { return }
-            let programms = self.parseJSON(data)
-            DispatchQueue.main.async {
-                completion(programms)
-            }
+            let programs = self.parseJSON(data)
+            self.programs += programs
+            DispatchQueue.main.async { self.completion() }
         }
         task.resume()
     }
     
-    private func makeURL(from searchTerm: String) -> URL? {
+    private func makeURL(from searchTerm: String, searchLimit: Int) -> URL? {
         let appKey = "app_id=73f7299c&app_key=41a235aabc2fc3c4f9bba2627cca97bc"
         let searchURL = "https://external.api.yle.fi/v1/programs/items.json"
-        let searchLimit = 20
-        let searchOffset = 0
         
         var urlComponents = URLComponents(string: searchURL)
         urlComponents?.query = "offset=\(searchOffset)&limit=\(searchLimit)&q=\(searchTerm)&\(appKey)"

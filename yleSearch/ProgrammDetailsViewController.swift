@@ -36,7 +36,7 @@ class ProgrammDetailsViewController: UIViewController {
         
         if let previewImageURL = programm?.fullImageURL  {
             let task = URLSession.shared.dataTask(with: previewImageURL) { data, response, error in
-                guard error == nil, (response?.statusCodeIsOK)!, let data = data else { return }
+                guard error == nil, response.statusCodeIsOK, let data = data else { return }
                 let image = UIImage(data: data)
                 DispatchQueue.main.async {
                     self.image.image = image
