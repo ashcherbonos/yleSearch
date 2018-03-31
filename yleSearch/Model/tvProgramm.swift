@@ -9,6 +9,7 @@
 import Foundation
 
 struct TvProgramm {
+    let id: String
     let title: String
     let description: String
     let dataModified: String

@@ -45,33 +45,6 @@ class SearchViewController: UIViewController {
 
 // MARK: - Search Bar
 
-//extension SearchViewController: UISearchBarDelegate {
-//
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        dismissKeyboard()
-//        guard let searchBarText = searchBar.text else { return }
-//        let _ = QueryService(searchTerm: searchBarText) { results in
-//            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-//            guard let results = results else { return }
-//            self.programms = results
-//            self.tableView.reloadData()
-//        }
-//    }
-//
-//    @objc func dismissKeyboard() {
-//        searchBar.resignFirstResponder()
-//    }
-//
-//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        view.addGestureRecognizer(dismissKeyboardOnTapRecognizer)
-//    }
-//
-//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//        view.removeGestureRecognizer(dismissKeyboardOnTapRecognizer)
-//    }
-//}
-
-
 extension SearchViewController:  UISearchControllerDelegate, UISearchBarDelegate {
     
     @objc func dismissKeyboard() {
@@ -124,7 +97,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         
         if let previewImageURL = programm.previewImageURL  {
             let task = URLSession.shared.dataTask(with: previewImageURL) { data, response, error in
-                guard error == nil, (response?.statusCodeIsOK)!, let data = data else { return }
+                guard error == nil, response.statusCodeIsOK, let data = data else { return }
                 let image = UIImage(data: data)
                 DispatchQueue.main.async {
                     if let cellToUpdate = tableView.cellForRow(at: indexPath) {
@@ -134,7 +107,15 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             }
             task.resume()
         }
-        
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        let lastElement = dataSource.count - 1
+//        if !loadingData && indexPath.row == lastElement {
+//            indicator.startAnimating()
+//            loadingData = true
+//            loadMoreData()
+//        }
+//    }
 }
