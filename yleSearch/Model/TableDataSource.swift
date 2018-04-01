@@ -17,13 +17,13 @@ extension Optional where Wrapped == URLResponse  {
 class TableDataSource: TableDataSourcer{
     var count:Int {return items.count}
     
-    subscript(index: Int) -> CellDataSource {
+    subscript(index: Int) -> CellDataSourcer {
         get{
             return items[index]
         }
     }
     
-    private var items: [CellDataSource]
+    private var items: [CellDataSourcer]
     private let searchTerm: String
     private let parser: JSONParsering
     private let urlMaker: URLMaking
@@ -50,7 +50,7 @@ class TableDataSource: TableDataSourcer{
         task.resume()
     }
     
-    private func parseJSON(_ jsonData: Data) -> [CellDataSource] {
+    private func parseJSON(_ jsonData: Data) -> [CellDataSourcer] {
         guard let json = (try? JSONSerialization.jsonObject(with: jsonData, options: [])) as? JSONDictionary else { return [] }
         return parser.parse(json)
     }

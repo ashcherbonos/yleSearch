@@ -10,23 +10,24 @@ import Foundation
 
 typealias JSONDictionary = [String: Any]
 
-protocol CellDataSource {}
+protocol CellDataSourcer {}
 
 protocol URLMaking  {
     func makeURL(query: String, offset: Int, limit: Int) -> URL?
 }
 
 protocol JSONParsering {
-    func parse(_ jsonDictionary: JSONDictionary) -> [CellDataSource]
+    func parse(_ jsonDictionary: JSONDictionary) -> [CellDataSourcer]
 }
 
 protocol TableDataSourcer {
     var count: Int {get}
-    subscript (index: Int) -> CellDataSource {get}
+    subscript (index: Int) -> CellDataSourcer {get}
     func giveNext(_: Int)
     init(searchTerm: String, urlMaker: URLMaking, parser: JSONParsering, completion: @escaping () -> ())
 }
 
 protocol TableDataSourcerMaker {
     func make(query: String, completion: @escaping () -> ()) ->  TableDataSourcer
+    func makeNilObject() ->  TableDataSourcer
 }

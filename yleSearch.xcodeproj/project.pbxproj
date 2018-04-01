@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E448F5E3206A704E00A65375 /* tvProgramm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E448F5E2206A704E00A65375 /* tvProgramm.swift */; };
+		E448F5E3206A704E00A65375 /* TvProgramm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E448F5E2206A704E00A65375 /* TvProgramm.swift */; };
 		E47F063E206A3EA800AB7F20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47F063D206A3EA800AB7F20 /* AppDelegate.swift */; };
 		E47F0640206A3EA800AB7F20 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47F063F206A3EA800AB7F20 /* SearchViewController.swift */; };
 		E47F0643206A3EA800AB7F20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E47F0641206A3EA800AB7F20 /* Main.storyboard */; };
 		E47F0645206A3EA800AB7F20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E47F0644206A3EA800AB7F20 /* Assets.xcassets */; };
 		E47F0648206A3EA800AB7F20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E47F0646206A3EA800AB7F20 /* LaunchScreen.storyboard */; };
 		E47F0650206A4C6300AB7F20 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47F064F206A4C6300AB7F20 /* TableDataSource.swift */; };
-		E4860F3220710762005B181A /* QueryServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4860F3120710762005B181A /* QueryServiceProtocols.swift */; };
-		E4860F3420711493005B181A /* YleQueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4860F3320711493005B181A /* YleQueryService.swift */; };
+		E4860F3220710762005B181A /* TableDataSourceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4860F3120710762005B181A /* TableDataSourceProtocols.swift */; };
+		E4860F3420711493005B181A /* YleTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4860F3320711493005B181A /* YleTableDataSource.swift */; };
 		E4CBD2F5206C3EB60055BAD9 /* Blank52.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CBD2F4206C3EB60055BAD9 /* Blank52.png */; };
 		E4CBD2F7206D53820055BAD9 /* ProgrammDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CBD2F6206D53820055BAD9 /* ProgrammDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E448F5E2206A704E00A65375 /* tvProgramm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tvProgramm.swift; sourceTree = "<group>"; };
+		E448F5E2206A704E00A65375 /* TvProgramm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvProgramm.swift; sourceTree = "<group>"; };
 		E47F063A206A3EA800AB7F20 /* yleSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yleSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E47F063D206A3EA800AB7F20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E47F063F206A3EA800AB7F20 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -30,8 +30,8 @@
 		E47F0647206A3EA800AB7F20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E47F0649206A3EA800AB7F20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E47F064F206A4C6300AB7F20 /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
-		E4860F3120710762005B181A /* QueryServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryServiceProtocols.swift; sourceTree = "<group>"; };
-		E4860F3320711493005B181A /* YleQueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YleQueryService.swift; sourceTree = "<group>"; };
+		E4860F3120710762005B181A /* TableDataSourceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSourceProtocols.swift; sourceTree = "<group>"; };
+		E4860F3320711493005B181A /* YleTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YleTableDataSource.swift; sourceTree = "<group>"; };
 		E4CBD2F4206C3EB60055BAD9 /* Blank52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blank52.png; sourceTree = "<group>"; };
 		E4CBD2F6206D53820055BAD9 /* ProgrammDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,9 +83,9 @@
 			isa = PBXGroup;
 			children = (
 				E47F064F206A4C6300AB7F20 /* TableDataSource.swift */,
-				E4860F3320711493005B181A /* YleQueryService.swift */,
-				E448F5E2206A704E00A65375 /* tvProgramm.swift */,
-				E4860F3120710762005B181A /* QueryServiceProtocols.swift */,
+				E4860F3320711493005B181A /* YleTableDataSource.swift */,
+				E448F5E2206A704E00A65375 /* TvProgramm.swift */,
+				E4860F3120710762005B181A /* TableDataSourceProtocols.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -163,11 +163,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4860F3220710762005B181A /* QueryServiceProtocols.swift in Sources */,
+				E4860F3220710762005B181A /* TableDataSourceProtocols.swift in Sources */,
 				E47F0640206A3EA800AB7F20 /* SearchViewController.swift in Sources */,
-				E448F5E3206A704E00A65375 /* tvProgramm.swift in Sources */,
+				E448F5E3206A704E00A65375 /* TvProgramm.swift in Sources */,
 				E47F0650206A4C6300AB7F20 /* TableDataSource.swift in Sources */,
-				E4860F3420711493005B181A /* YleQueryService.swift in Sources */,
+				E4860F3420711493005B181A /* YleTableDataSource.swift in Sources */,
 				E4CBD2F7206D53820055BAD9 /* ProgrammDetailsViewController.swift in Sources */,
 				E47F063E206A3EA800AB7F20 /* AppDelegate.swift in Sources */,
 			);

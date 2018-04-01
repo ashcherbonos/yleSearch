@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TvProgramm: CellDataSource {
+struct TvProgramm: CellDataSourcer {
     let id: String
     let title: String
     let description: String
@@ -39,5 +39,4 @@ extension TvProgramm {
         print(urlString)
         return URL(string: urlString)
     }
-    
 }

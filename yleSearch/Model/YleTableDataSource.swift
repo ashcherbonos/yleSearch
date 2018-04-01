@@ -22,7 +22,7 @@ struct YleURLMaker: URLMaking {
 
 struct YleJSONParser: JSONParsering {
     
-    func parse(_ jsonDictionary: JSONDictionary) -> [CellDataSource] {
+    func parse(_ jsonDictionary: JSONDictionary) -> [CellDataSourcer] {
         guard let data = jsonDictionary["data"] as? [JSONDictionary] else { return []}
         return data.flatMap{parseProgramm($0)}
     }
@@ -45,12 +45,16 @@ struct YleJSONParser: JSONParsering {
     }
 }
 
-class YleQueryServiceFactory: TableDataSourcerMaker {
+class YleTableDataSourcerFactory: TableDataSourcerMaker {
    
     func make(query: String, completion: @escaping () -> ()) ->  TableDataSourcer {
         let urlMaker = YleURLMaker()
         let parser = YleJSONParser()
         return TableDataSource (searchTerm: query, urlMaker: urlMaker, parser: parser, completion:completion)
+    }
+    
+    func makeNilObject() -> TableDataSourcer {
+        return make(query: ""){}
     }
 }
 
