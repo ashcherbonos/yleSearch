@@ -10,15 +10,14 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-    
     let cellIdentifier: String = "SearchResultCell"
     var searchController : UISearchController!
-    var queryService = QueryService(searchTerm: ""){} // TODO: null object
+    let dataSourceFactory = YleQueryServiceFactory()
+    var dataSource: TableDataSourcer?
     private var loadingData = false
     @IBOutlet weak var tableView: UITableView!
     
     lazy var dismissKeyboardOnTapRecognizer = UITapGestureRecognizer(target:self, action: #selector(dismissKeyboard))
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,15 +29,13 @@ class SearchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
      // MARK: - Navigation
     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailsVC = segue.destination as? ProgrammDetailsViewController,
-            let programmIndex = tableView.indexPathForSelectedRow?.row
+            let programmIndex = tableView.indexPathForSelectedRow?.row,
+            let selectedProgramm = dataSource?[programmIndex] as? TvProgramm
             else { return }
-        let selectedProgramm = queryService.result[programmIndex]
         detailsVC.programm = selectedProgramm
      }
 }
@@ -70,12 +67,13 @@ extension SearchViewController:  UISearchControllerDelegate, UISearchBarDelegate
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         dismissKeyboard()
         guard let searchText = searchBar.text else { return }
-        queryService = QueryService(searchTerm: searchText) { 
+        dataSource = dataSourceFactory.make(query: searchText) {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             self.loadingData = false
             self.tableView.reloadData()
+            print("load more results")
         }
-        queryService.searchForNext(quantityOf: 20)
+        dataSource?.giveNext(20)
     }
     
 }
@@ -85,12 +83,12 @@ extension SearchViewController:  UISearchControllerDelegate, UISearchBarDelegate
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return queryService.result.count
+        return dataSource?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
-        let programm = queryService.result[indexPath.row]
+        let programm = dataSource![indexPath.row] as! TvProgramm
         cell.textLabel?.text = programm.title
         cell.detailTextLabel?.text = programm.description
         cell.imageView?.image = UIImage(named: "Blank52")
@@ -110,14 +108,12 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastElement = queryService.result.count - 1
+        let lastElement = dataSource!.count - 1
         if !loadingData && indexPath.row == lastElement {
 //            indicator.startAnimating()
             loadingData = true
-            queryService.searchForNext(quantityOf: 20)
+            dataSource?.giveNext(20)
         }
     }
 }
