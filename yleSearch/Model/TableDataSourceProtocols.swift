@@ -24,10 +24,15 @@ protocol TableDataSourcer {
     var count: Int {get}
     subscript (index: Int) -> CellDataSourcer {get}
     func giveNext(_: Int)
-    init(searchTerm: String, urlMaker: URLMaking, parser: JSONParsering, completion: @escaping () -> ())
+    //init(searchTerm: String, urlMaker: URLMaking, parser: JSONParsering, completion: @escaping () -> ())
 }
 
 protocol TableDataSourcerMaker {
     func make(query: String, completion: @escaping () -> ()) ->  TableDataSourcer
-    func makeNilObject() ->  TableDataSourcer
+}
+
+struct EmptyTableDataSource: TableDataSourcer {
+    let count = 0
+    subscript(index: Int) -> CellDataSourcer { fatalError() }
+    func giveNext(_: Int) {}
 }

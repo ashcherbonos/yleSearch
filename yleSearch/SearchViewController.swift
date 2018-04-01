@@ -12,8 +12,8 @@ class SearchViewController: UIViewController {
 
     let cellIdentifier: String = "SearchResultCell"
     var searchController: UISearchController!
-    let dataSourceFactory: TableDataSourcerMaker = YleTableDataSourcerFactory()
-    lazy var dataSource: TableDataSourcer = dataSourceFactory.makeNilObject()
+    let dataSourceFactory = YleTableDataSourcerFactory()
+    var dataSource: TableDataSourcer = EmptyTableDataSource()
     private var loadingData = false
     @IBOutlet weak var tableView: UITableView!
     

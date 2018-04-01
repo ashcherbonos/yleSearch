@@ -46,15 +46,10 @@ struct YleJSONParser: JSONParsering {
 }
 
 class YleTableDataSourcerFactory: TableDataSourcerMaker {
-   
     func make(query: String, completion: @escaping () -> ()) ->  TableDataSourcer {
         let urlMaker = YleURLMaker()
         let parser = YleJSONParser()
         return TableDataSource (searchTerm: query, urlMaker: urlMaker, parser: parser, completion:completion)
-    }
-    
-    func makeNilObject() -> TableDataSourcer {
-        return make(query: ""){}
     }
 }
 
