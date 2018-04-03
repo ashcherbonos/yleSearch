@@ -24,7 +24,6 @@ protocol TableDataSourcer {
     var count: Int {get}
     subscript (index: Int) -> CellDataSourcer {get}
     func giveNext(_: Int)
-    //init(searchTerm: String, urlMaker: URLMaking, parser: JSONParsering, completion: @escaping () -> ())
 }
 
 protocol TableDataSourcerMaker {
@@ -34,5 +33,5 @@ protocol TableDataSourcerMaker {
 struct EmptyTableDataSource: TableDataSourcer {
     let count = 0
     subscript(index: Int) -> CellDataSourcer { fatalError() }
-    func giveNext(_: Int) {}
+    func giveNext(_: Int) { fatalError() }
 }

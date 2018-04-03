@@ -12,8 +12,9 @@ class SearchViewController: UIViewController {
 
     let cellIdentifier: String = "SearchResultCell"
     var searchController: UISearchController!
-    let dataSourceFactory = YleTableDataSourcerFactory()
+    let dataSourceFactory:TableDataSourcerMaker = YleTableDataSourcerFactory()
     var dataSource: TableDataSourcer = EmptyTableDataSource()
+    var imageLoader = ImageLoader()
     private var loadingData = false
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,7 +27,7 @@ class SearchViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        imageLoader.emptyCache()
     }
     
      // MARK: - Navigation
@@ -85,20 +86,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         let programm = dataSource[indexPath.row] as! TvProgramm
         cell.textLabel?.text = programm.title
         cell.detailTextLabel?.text = programm.description
-        cell.imageView?.image = UIImage(named: "Blank52")
-        
-        if let previewImageURL = programm.previewImageURL  {
-            let task = URLSession.shared.dataTask(with: previewImageURL) { data, response, error in
-                guard error == nil, response.statusCodeIsOK, let data = data else { return }
-                let image = UIImage(data: data)
-                DispatchQueue.main.async {
-                    if let cellToUpdate = tableView.cellForRow(at: indexPath) {
-                        cellToUpdate.imageView?.image = image
-                    }
-                }
-            }
-            task.resume()
-        }
+        imageLoader.load(imageView: cell.imageView, url: programm.previewImageURL)
         return cell
     }
     

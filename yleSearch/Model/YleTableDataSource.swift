@@ -45,11 +45,12 @@ struct YleJSONParser: JSONParsering {
     }
 }
 
-class YleTableDataSourcerFactory: TableDataSourcerMaker {
+struct YleTableDataSourcerFactory: TableDataSourcerMaker {
+    
+    private let factory = TableDataSourceFactoryTemplate(urlMaker: YleURLMaker(), parser: YleJSONParser())
+    
     func make(query: String, completion: @escaping () -> ()) ->  TableDataSourcer {
-        let urlMaker = YleURLMaker()
-        let parser = YleJSONParser()
-        return TableDataSource (searchTerm: query, urlMaker: urlMaker, parser: parser, completion:completion)
+        return factory.make(query: query, completion:completion)
     }
 }
 

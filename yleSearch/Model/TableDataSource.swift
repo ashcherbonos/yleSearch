@@ -14,6 +14,15 @@ extension Optional where Wrapped == URLResponse  {
     }
 }
 
+struct TableDataSourceFactoryTemplate: TableDataSourcerMaker {
+    let urlMaker: URLMaking
+    let parser: JSONParsering
+    
+    func make(query: String, completion: @escaping () -> ()) ->  TableDataSourcer {
+        return TableDataSource (searchTerm: query, urlMaker: urlMaker, parser: parser, completion:completion)
+    }
+}
+
 class TableDataSource: TableDataSourcer{
     var count:Int {return items.count}
     
@@ -28,9 +37,9 @@ class TableDataSource: TableDataSourcer{
     private let parser: JSONParsering
     private let urlMaker: URLMaking
     private let completion: () -> ()
-    private var noMoreResultsAvaliable = false;
+    private var moreResultsAvaliable = true;
     
-    required init(searchTerm: String, urlMaker: URLMaking, parser: JSONParsering, completion: @escaping () -> ()) {
+    init(searchTerm: String, urlMaker: URLMaking, parser: JSONParsering, completion: @escaping () -> ()) {
         self.searchTerm = searchTerm
         self.urlMaker = urlMaker
         self.parser = parser
@@ -39,19 +48,24 @@ class TableDataSource: TableDataSourcer{
     }
     
     func giveNext(_ quantity: Int) {
-        guard !noMoreResultsAvaliable, let url = urlMaker.makeURL(query: searchTerm, offset: items.count, limit: quantity) else { return }
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard error == nil, response.statusCodeIsOK, let data = data else { return }
-            let items = self.parseJSON(data)
-            self.noMoreResultsAvaliable = (items.count == 0)
-            self.items += items
-            DispatchQueue.main.async { self.completion() }
+        guard moreResultsAvaliable,
+            let url = urlMaker.makeURL(query: searchTerm, offset: items.count, limit: quantity)
+            else { return }
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard error == nil,
+                response.statusCodeIsOK,
+                let data = data,
+                let items = self?.parseJSON(data)
+                else { return }
+            self?.moreResultsAvaliable = (items.count > 0)
+            self?.items += items
+            DispatchQueue.main.async { self?.completion() }
         }
         task.resume()
     }
     
-    private func parseJSON(_ jsonData: Data) -> [CellDataSourcer] {
-        guard let json = (try? JSONSerialization.jsonObject(with: jsonData, options: [])) as? JSONDictionary else { return [] }
+    private func parseJSON(_ jsonData: Data) -> [CellDataSourcer]? {
+        guard let json = (try? JSONSerialization.jsonObject(with: jsonData, options: [])) as? JSONDictionary else { return nil }
         return parser.parse(json)
     }
 }
