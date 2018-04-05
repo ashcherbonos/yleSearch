@@ -85,7 +85,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         let programm = dataSource[indexPath.row] as! TvProgramm
         cell.textLabel?.text = programm.title
         cell.detailTextLabel?.text = programm.description
-        imageLoader.load(url: programm.previewImageURL, intoImageView: cell.imageView, withStub: programm.title)
+        imageLoader.load(url: programm.previewImageURL(size: cell.bounds.height), intoImageView: cell.imageView, withStub: programm.title)
         return cell
     }
     

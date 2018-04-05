@@ -6,7 +6,7 @@
 //  Copyright © 2018 Oleksandr Shcherbonos. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct YleURLMaker: URLMaking {
     func makeURL(query: String, offset: Int, limit: Int) -> URL? {
@@ -24,7 +24,7 @@ struct YleJSONParser: JSONParsering {
     
     func parse(_ jsonDictionary: JSONDictionary) -> [CellDataSourcer] {
         guard let data = jsonDictionary["data"] as? [JSONDictionary] else { return []}
-        return data.flatMap{parseProgramm($0)}
+        return data.compactMap{parseProgramm($0)}
     }
     
     private func parseProgramm(_ programmJSON: JSONDictionary) -> TvProgramm? {
@@ -51,6 +51,34 @@ struct YleTableDataSourcerFactory: TableDataSourcerMaker {
     
     func make(query: String, completion: @escaping () -> ()) ->  TableDataSourcer {
         return factory.make(query: query, completion:completion)
+    }
+}
+
+
+extension TvProgramm {
+    func previewImageURL(size: CGFloat) -> URL? {
+        guard let imageID = imageID else { return nil }
+        let width = Int(size)
+        let height = width
+        let fillMode = "c_thumb,r_max"
+        let imageFormat = ".png"
+        let urlString = "https://images.cdn.yle.fi/image/upload/w_\(width),h_\(height),\(fillMode)/\(imageID)\(imageFormat)"
+        return URL(string: urlString)
+    }
+    
+    var fullImageURL: URL? {
+        guard let imageID = imageID else { return nil }
+        let width = deviceScreenSmollerSideSize
+        let height = width
+        let fillMode = "c_fill"
+        let imageFormat = ".png"
+        let urlString = "https://images.cdn.yle.fi/image/upload/w_\(width),h_\(height),\(fillMode)/\(imageID)\(imageFormat)"
+        print("fullImageURL = \(urlString)")
+        return URL(string: urlString)
+    }
+    
+    private var deviceScreenSmollerSideSize: Int {
+        return Int(min(UIScreen.main.bounds.height, UIScreen.main.bounds.height))
     }
 }
 

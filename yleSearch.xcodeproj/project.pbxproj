@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E40CE7B42076239E00FBCC57 /* UIView+fadeIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40CE7B32076239E00FBCC57 /* UIView+fadeIn.swift */; };
+		E40CE7B42076239E00FBCC57 /* UIView + fadeIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40CE7B32076239E00FBCC57 /* UIView + fadeIn.swift */; };
 		E448F5E3206A704E00A65375 /* TvProgramm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E448F5E2206A704E00A65375 /* TvProgramm.swift */; };
 		E47F063E206A3EA800AB7F20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47F063D206A3EA800AB7F20 /* AppDelegate.swift */; };
 		E47F0640206A3EA800AB7F20 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47F063F206A3EA800AB7F20 /* SearchViewController.swift */; };
@@ -18,13 +18,12 @@
 		E4860F3220710762005B181A /* TableDataSourceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4860F3120710762005B181A /* TableDataSourceProtocols.swift */; };
 		E4860F3420711493005B181A /* YleTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4860F3320711493005B181A /* YleTableDataSource.swift */; };
 		E4860F36207238A2005B181A /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4860F35207238A2005B181A /* ImageLoader.swift */; };
-		E4A0D89E20738A09002EB008 /* PreviewStubImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0D89D20738A09002EB008 /* PreviewStubImage.swift */; };
-		E4CBD2F5206C3EB60055BAD9 /* Blank52.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CBD2F4206C3EB60055BAD9 /* Blank52.png */; };
+		E4A0D89E20738A09002EB008 /* UIImage + PreviewStubImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0D89D20738A09002EB008 /* UIImage + PreviewStubImage.swift */; };
 		E4CBD2F7206D53820055BAD9 /* ProgrammDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CBD2F6206D53820055BAD9 /* ProgrammDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E40CE7B32076239E00FBCC57 /* UIView+fadeIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+fadeIn.swift"; sourceTree = "<group>"; };
+		E40CE7B32076239E00FBCC57 /* UIView + fadeIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + fadeIn.swift"; sourceTree = "<group>"; };
 		E448F5E2206A704E00A65375 /* TvProgramm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvProgramm.swift; sourceTree = "<group>"; };
 		E47F063A206A3EA800AB7F20 /* yleSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yleSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E47F063D206A3EA800AB7F20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,8 +36,7 @@
 		E4860F3120710762005B181A /* TableDataSourceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSourceProtocols.swift; sourceTree = "<group>"; };
 		E4860F3320711493005B181A /* YleTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YleTableDataSource.swift; sourceTree = "<group>"; };
 		E4860F35207238A2005B181A /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		E4A0D89D20738A09002EB008 /* PreviewStubImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewStubImage.swift; sourceTree = "<group>"; };
-		E4CBD2F4206C3EB60055BAD9 /* Blank52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blank52.png; sourceTree = "<group>"; };
+		E4A0D89D20738A09002EB008 /* UIImage + PreviewStubImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + PreviewStubImage.swift"; sourceTree = "<group>"; };
 		E4CBD2F6206D53820055BAD9 /* ProgrammDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E46B02DE2076929E009773AA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E4A0D89D20738A09002EB008 /* UIImage + PreviewStubImage.swift */,
+				E40CE7B32076239E00FBCC57 /* UIView + fadeIn.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E47F0631206A3EA800AB7F20 = {
 			isa = PBXGroup;
 			children = (
@@ -74,10 +81,8 @@
 			children = (
 				E47F063D206A3EA800AB7F20 /* AppDelegate.swift */,
 				E4CBD2F6206D53820055BAD9 /* ProgrammDetailsViewController.swift */,
-				E40CE7B32076239E00FBCC57 /* UIView+fadeIn.swift */,
-				E4CBD2F4206C3EB60055BAD9 /* Blank52.png */,
+				E46B02DE2076929E009773AA /* View */,
 				E47F063F206A3EA800AB7F20 /* SearchViewController.swift */,
-				E4A0D89D20738A09002EB008 /* PreviewStubImage.swift */,
 				E4860F35207238A2005B181A /* ImageLoader.swift */,
 				E4CBD2F3206BA86B0055BAD9 /* Model */,
 				E47F0641206A3EA800AB7F20 /* Main.storyboard */,
@@ -159,7 +164,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E47F0648206A3EA800AB7F20 /* LaunchScreen.storyboard in Resources */,
-				E4CBD2F5206C3EB60055BAD9 /* Blank52.png in Resources */,
 				E47F0645206A3EA800AB7F20 /* Assets.xcassets in Resources */,
 				E47F0643206A3EA800AB7F20 /* Main.storyboard in Resources */,
 			);
@@ -174,10 +178,10 @@
 			files = (
 				E4860F3220710762005B181A /* TableDataSourceProtocols.swift in Sources */,
 				E47F0640206A3EA800AB7F20 /* SearchViewController.swift in Sources */,
-				E4A0D89E20738A09002EB008 /* PreviewStubImage.swift in Sources */,
+				E4A0D89E20738A09002EB008 /* UIImage + PreviewStubImage.swift in Sources */,
 				E448F5E3206A704E00A65375 /* TvProgramm.swift in Sources */,
 				E47F0650206A4C6300AB7F20 /* TableDataSource.swift in Sources */,
-				E40CE7B42076239E00FBCC57 /* UIView+fadeIn.swift in Sources */,
+				E40CE7B42076239E00FBCC57 /* UIView + fadeIn.swift in Sources */,
 				E4860F3420711493005B181A /* YleTableDataSource.swift in Sources */,
 				E4CBD2F7206D53820055BAD9 /* ProgrammDetailsViewController.swift in Sources */,
 				E4860F36207238A2005B181A /* ImageLoader.swift in Sources */,
