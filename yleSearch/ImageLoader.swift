@@ -13,11 +13,14 @@ fileprivate extension URL {
 }
 
 fileprivate class ImageCash {
-    let cache = NSCache<NSString, UIImage>()
+    
+    private let cache = NSCache<NSString, UIImage>()
+    
     subscript(url: URL) -> UIImage?{
         get { return cache.object(forKey: url.NSString) }
         set { cache.setObject(newValue!, forKey: url.NSString) }
     }
+    
     func empty() {
         cache.removeAllObjects()
     }
@@ -27,7 +30,7 @@ struct ImageLoader {
     
     private let cache = ImageCash()
     
-    func load(imageView: UIImageView?, url: URL?){
+    func load( url: URL?, intoImageView imageView: UIImageView?, withStub title: String){
         
         guard let guardedImageView = imageView,
             let url = url
@@ -38,18 +41,18 @@ struct ImageLoader {
             return
         }
         
-        stub(for: guardedImageView)
-       
+        makeStub(for: guardedImageView, withLabel: title)
+        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil, response.statusCodeIsOK,
-                let data = data
+                let data = data,
+                let image = UIImage(data: data)
                 else { return }
-            let image = UIImage(data: data)
             self.cache[url] = image
             DispatchQueue.main.async {
-                guard let imageView = imageView
-                    else {return}
-                imageView.image = image
+                guard let stillExistingImageView = imageView
+                    else { return }
+                self.animateAppearance(image, in: stillExistingImageView)
             }
         }
         task.resume()
@@ -59,7 +62,15 @@ struct ImageLoader {
         cache.empty()
     }
     
-    private func stub(for imageView: UIImageView){
-        imageView.image = UIImage(named: "Blank52")
+    private func makeStub(for imageView: UIImageView, withLabel label: String){
+        imageView.image = UIImage(inCircleOfSize: CGSize(width: 52 , height: 52), label: label)
+    }
+    
+    private func animateAppearance(_ image: UIImage, in imageView: UIImageView){
+        UIView.transition(with: imageView,
+                          duration: 0.5,
+                          options: [.transitionCrossDissolve],
+                          animations: { imageView.image = image },
+                          completion: nil)
     }
 }

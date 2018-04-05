@@ -66,7 +66,6 @@ extension SearchViewController:  UISearchControllerDelegate, UISearchBarDelegate
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             self.loadingData = false
             self.tableView.reloadData()
-            print("load more results")
         }
         dataSource.giveNext(20)
     }
@@ -86,7 +85,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         let programm = dataSource[indexPath.row] as! TvProgramm
         cell.textLabel?.text = programm.title
         cell.detailTextLabel?.text = programm.description
-        imageLoader.load(imageView: cell.imageView, url: programm.previewImageURL)
+        imageLoader.load(url: programm.previewImageURL, intoImageView: cell.imageView, withStub: programm.title)
         return cell
     }
     
