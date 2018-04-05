@@ -10,15 +10,14 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-    let cellIdentifier: String = "SearchResultCell"
-    var searchController: UISearchController!
-    let dataSourceFactory:TableDataSourcerMaker = YleTableDataSourcerFactory()
-    var dataSource: TableDataSourcer = EmptyTableDataSource()
-    var imageLoader = ImageLoader()
-    private var loadingData = false
+    lazy var viewModel = SearchViewModel(delegate: self)
+    private let cellIdentifier: String = "SearchResultCell"
+    private var searchController: UISearchController!
+    private var imageLoader = ImageLoader()
+    
     @IBOutlet weak var tableView: UITableView!
     
-    lazy var dismissKeyboardOnTapRecognizer = UITapGestureRecognizer(target:self, action: #selector(dismissKeyboard))
+//    lazy var dismissKeyboardOnTapRecognizer = UITapGestureRecognizer(target:self, action: #selector(dismissKeyboard))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,16 +28,27 @@ class SearchViewController: UIViewController {
         super.didReceiveMemoryWarning()
         imageLoader.emptyCache()
     }
+}
+
+// MARK: - ViewModel Delegate
+
+extension SearchViewController: SearchViewModelDelegate {
     
-     // MARK: - Navigation
+    func updateView() {
+        tableView.reloadData()
+    }
+}
+
+// MARK: - Navigation
+
+extension SearchViewController {
     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailsVC = segue.destination as? ProgrammDetailsViewController,
-            let programmIndex = tableView.indexPathForSelectedRow?.row,
-            let selectedProgramm = dataSource[programmIndex] as? TvProgramm
+            let programmIndex = tableView.indexPathForSelectedRow?.row
             else { return }
-        detailsVC.programm = selectedProgramm
-     }
+        detailsVC.programm = viewModel.getData(for: programmIndex)
+    }
 }
 
 // MARK: - Search Bar
@@ -61,15 +71,10 @@ extension SearchViewController:  UISearchControllerDelegate, UISearchBarDelegate
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         dismissKeyboard()
-        guard let searchText = searchBar.text else { return }
-        dataSource = dataSourceFactory.make(query: searchText) {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            self.loadingData = false
-            self.tableView.reloadData()
-        }
-        dataSource.giveNext(20)
+        guard let searchBarText = searchBar.text
+            else { return }
+        viewModel.search(for: searchBarText)
     }
-    
 }
 
 // MARK: - Table View
@@ -77,12 +82,12 @@ extension SearchViewController:  UISearchControllerDelegate, UISearchBarDelegate
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return viewModel.dataCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
-        let programm = dataSource[indexPath.row] as! TvProgramm
+        let programm = viewModel.getData(for: indexPath.row)
         cell.textLabel?.text = programm.title
         cell.detailTextLabel?.text = programm.description
         imageLoader.load(url: programm.previewImageURL(size: cell.bounds.height), intoImageView: cell.imageView, withStub: programm.title)
@@ -90,11 +95,9 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let lastElement = dataSource.count - 1
-        if !loadingData && indexPath.row == lastElement {
-//            indicator.startAnimating()
-            loadingData = true
-            dataSource.giveNext(20)
-        }
+        guard viewModel.isReady,
+            indexPath.row == viewModel.dataLastIndex
+            else { return }
+        viewModel.loadMoreData()
     }
 }
