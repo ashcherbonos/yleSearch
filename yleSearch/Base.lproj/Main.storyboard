@@ -172,9 +172,14 @@
                                                 </constraints>
                                                 <variation key="heightClass=compact" axis="horizontal"/>
                                             </stackView>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JhX-bv-3y1">
+                                                <rect key="frame" x="175" y="175" width="20" height="20"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="JhX-bv-3y1" firstAttribute="centerY" secondItem="EUD-Al-Teq" secondAttribute="centerY" id="DQc-zj-RNg"/>
+                                            <constraint firstItem="JhX-bv-3y1" firstAttribute="centerX" secondItem="EUD-Al-Teq" secondAttribute="centerX" id="Mou-gs-5PX"/>
                                             <constraint firstItem="ucs-Y4-XTN" firstAttribute="top" secondItem="fhq-Nh-xZe" secondAttribute="top" id="YZf-uZ-d0u"/>
                                             <constraint firstItem="ucs-Y4-XTN" firstAttribute="bottom" secondItem="fhq-Nh-xZe" secondAttribute="bottom" id="tOm-sd-aWe"/>
                                             <constraint firstItem="ucs-Y4-XTN" firstAttribute="leading" secondItem="fhq-Nh-xZe" secondAttribute="leading" id="zdg-fx-zcD"/>
@@ -217,6 +222,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="VFV-Zp-hDI"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="JhX-bv-3y1" id="KLu-Oq-974"/>
                         <outlet property="dateLabel" destination="haV-4U-Awr" id="ecg-e2-ACg"/>
                         <outlet property="descriptionLabel" destination="4mW-Hg-8Wq" id="VpS-Tq-7B3"/>
                         <outlet property="imageView" destination="EUD-Al-Teq" id="uCN-DO-dJq"/>
