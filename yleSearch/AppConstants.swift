@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct Constants {
+struct AppConstants {
     static let yleAppKey = "app_id=73f7299c&app_key=41a235aabc2fc3c4f9bba2627cca97bc"
     static let searchLimit = 20
     static let imagesFadeInDuration = 0.5
-    static let previewImageSize = 52
+    static let previewImageSize = 128
 }

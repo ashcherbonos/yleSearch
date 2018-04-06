@@ -10,7 +10,7 @@ import UIKit
 
 struct YleURLMaker: URLMaking {
     func makeURL(query: String, offset: Int, limit: Int) -> URL? {
-        let appKey = Constants.yleAppKey
+        let appKey = AppConstants.yleAppKey
         let searchURL = "https://external.api.yle.fi/v1/programs/items.json"
         
         var urlComponents = URLComponents(string: searchURL)

@@ -45,6 +45,6 @@ class SearchViewModel {
     
     private func loadData() {
         loadingData = true
-        dataSource.loadData(amount: Constants.searchLimit)
+        dataSource.loadData(amount: AppConstants.searchLimit)
     }
 }

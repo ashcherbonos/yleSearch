@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E46B02E02076A2DA009773AA /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46B02DF2076A2DA009773AA /* SearchViewModel.swift */; };
-		E46B02E22076CED7009773AA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46B02E12076CED7009773AA /* Constants.swift */; };
+		E46B02E22076CED7009773AA /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46B02E12076CED7009773AA /* AppConstants.swift */; };
 		E46B02E420777ED4009773AA /* TvProgramm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46B02E320777ED4009773AA /* TvProgramm.swift */; };
 		E46B02E720778287009773AA /* Logo-iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = E46B02E620778287009773AA /* Logo-iOS.png */; };
 		E47F063E206A3EA800AB7F20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47F063D206A3EA800AB7F20 /* AppDelegate.swift */; };
@@ -26,7 +26,7 @@
 
 /* Begin PBXFileReference section */
 		E46B02DF2076A2DA009773AA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		E46B02E12076CED7009773AA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E46B02E12076CED7009773AA /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		E46B02E320777ED4009773AA /* TvProgramm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvProgramm.swift; sourceTree = "<group>"; };
 		E46B02E620778287009773AA /* Logo-iOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo-iOS.png"; sourceTree = "<group>"; };
 		E47F063A206A3EA800AB7F20 /* yleSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yleSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,12 +55,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E46B02DE2076929E009773AA /* View */ = {
+		E46B02DE2076929E009773AA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				E4A0D89D20738A09002EB008 /* UIImage + PreviewStubImage.swift */,
+				E4860F35207238A2005B181A /* ImageLoader.swift */,
 			);
-			path = View;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		E46B02E52077803D009773AA /* Networking */ = {
@@ -71,6 +72,34 @@
 				E4860F3120710762005B181A /* TableDataSourceProtocols.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		E46B02E82077855C009773AA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E47F0644206A3EA800AB7F20 /* Assets.xcassets */,
+				E46B02E620778287009773AA /* Logo-iOS.png */,
+				E47F063D206A3EA800AB7F20 /* AppDelegate.swift */,
+				E47F0646206A3EA800AB7F20 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E46B02E9207785C4009773AA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E47F063F206A3EA800AB7F20 /* SearchViewController.swift */,
+				E4CBD2F6206D53820055BAD9 /* ProgrammDetailsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E46B02EA207785D2009773AA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E46B02DF2076A2DA009773AA /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E47F0631206A3EA800AB7F20 = {
@@ -92,18 +121,13 @@
 		E47F063C206A3EA800AB7F20 /* yleSearch */ = {
 			isa = PBXGroup;
 			children = (
-				E47F063D206A3EA800AB7F20 /* AppDelegate.swift */,
-				E4CBD2F6206D53820055BAD9 /* ProgrammDetailsViewController.swift */,
-				E46B02DE2076929E009773AA /* View */,
-				E47F063F206A3EA800AB7F20 /* SearchViewController.swift */,
-				E46B02E620778287009773AA /* Logo-iOS.png */,
-				E46B02DF2076A2DA009773AA /* SearchViewModel.swift */,
-				E4860F35207238A2005B181A /* ImageLoader.swift */,
-				E46B02E12076CED7009773AA /* Constants.swift */,
+				E46B02E9207785C4009773AA /* Controller */,
+				E46B02EA207785D2009773AA /* ViewModel */,
 				E4CBD2F3206BA86B0055BAD9 /* Model */,
+				E46B02DE2076929E009773AA /* Utilities */,
+				E46B02E82077855C009773AA /* Supporting Files */,
+				E46B02E12076CED7009773AA /* AppConstants.swift */,
 				E47F0641206A3EA800AB7F20 /* Main.storyboard */,
-				E47F0644206A3EA800AB7F20 /* Assets.xcassets */,
-				E47F0646206A3EA800AB7F20 /* LaunchScreen.storyboard */,
 				E47F0649206A3EA800AB7F20 /* Info.plist */,
 			);
 			path = yleSearch;
@@ -200,7 +224,7 @@
 				E4CBD2F7206D53820055BAD9 /* ProgrammDetailsViewController.swift in Sources */,
 				E4860F36207238A2005B181A /* ImageLoader.swift in Sources */,
 				E47F063E206A3EA800AB7F20 /* AppDelegate.swift in Sources */,
-				E46B02E22076CED7009773AA /* Constants.swift in Sources */,
+				E46B02E22076CED7009773AA /* AppConstants.swift in Sources */,
 				E46B02E420777ED4009773AA /* TvProgramm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
