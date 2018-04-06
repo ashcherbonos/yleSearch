@@ -30,32 +30,26 @@ struct ImageLoader {
     
     private let cache = ImageCash()
     
-    func load( url: URL?, intoImageView imageView: UIImageView?, complition: ((Bool)->())? = nil ){
-        
-        guard let guardedImageView = imageView,
-            let url = url
-            else {return}
-        
+    func load( url: URL?, intoImageView imageView: UIImageView, urlGuarder: @escaping ((URL)->Bool) = {_ in return true}, complition: @escaping ((Bool)->()) = {_ in} ){
+        guard let url = url else {return}
         if let cachedImage = cache[url] {
-            guardedImageView.image = cachedImage
-            complition?(true)
+            imageView.image = cachedImage
+            complition(true)
             return
         }
-        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil,
                 let data = data,
                 let image = UIImage(data: data)
                 else {
-                    DispatchQueue.main.async { complition?(false) }
+                    DispatchQueue.main.async { complition(false) }
                     return
             }
             self.cache[url] = image
             DispatchQueue.main.async {
-                guard let stillExistingImageView = imageView // TODO: - check if imageView still expected this(!) url
-                    else { return }
-                self.animateAppearance(image, in: stillExistingImageView)
-                complition?(true)
+                guard urlGuarder(url) else { return }
+                self.animateAppearance(image, in: imageView)
+                complition(true)
             }
         }
         task.resume()

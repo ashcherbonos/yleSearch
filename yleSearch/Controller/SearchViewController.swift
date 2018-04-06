@@ -92,13 +92,23 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    private func fill(cell: UITableViewCell, withData programm: TvProgramm){
+    private func fill(cell: UITableViewCell,withData programm: TvProgramm){
         cell.textLabel?.text = programm.title
         cell.detailTextLabel?.text = programm.description
         
         imageLoader.makeStub(for: cell.imageView!, withLabel: programm.title)
         let url = programm.previewImageURL
-        imageLoader.load(url: url, intoImageView: cell.imageView)
+        imageLoader.load(url: url,
+                         intoImageView: cell.imageView!,
+                         urlGuarder: { [weak self] url in
+                            return self?.checkIf(cell: cell, expectsPreviewURL: url) ?? false })
+    }
+    
+    private func checkIf(cell: UITableViewCell, expectsPreviewURL url: URL) -> Bool {
+        guard let cellDataIndex = tableView.indexPath(for: cell)?.row,
+            let cellExpectedUrl = viewModel.getData(for: cellDataIndex).previewImageURL
+            else { return false}
+        return url == cellExpectedUrl
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
