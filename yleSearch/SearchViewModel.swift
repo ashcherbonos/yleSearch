@@ -8,22 +8,19 @@
 
 import UIKit
 
-
 protocol SearchViewModelDelegate {
     func updateView()
 }
 
 class SearchViewModel {
     
-    let delegate: SearchViewModelDelegate
-    
     var dataCount: Int { return dataSource.count}
     var dataLastIndex: Int { return dataCount - 1 }
     var isReady: Bool { return !loadingData }
     
+    private let delegate: SearchViewModelDelegate
     private let dataSourceFactory:TableDataSourcerMaker = YleTableDataSourcerFactory()
-    private var dataSource: TableDataSourcer = EmptyTableDataSource()
-    
+    private var dataSource: TableDataSourcer = TableDataSourceNullObject()
     private var loadingData = false
     
     init(delegate: SearchViewModelDelegate){
@@ -35,7 +32,7 @@ class SearchViewModel {
             self?.loadingData = false
             self?.delegate.updateView()
         }
-        loadData(amount: 20)
+        loadData()
     }
     
     func getData(for index: Int) -> TvProgramm {
@@ -43,11 +40,11 @@ class SearchViewModel {
     }
     
     func loadMoreData() {
-        loadData(amount: 20)
+        loadData()
     }
     
-    private func loadData(amount: Int) {
+    private func loadData() {
         loadingData = true
-        dataSource.giveNext(20)
+        dataSource.loadData(amount: Constants.searchLimit)
     }
 }

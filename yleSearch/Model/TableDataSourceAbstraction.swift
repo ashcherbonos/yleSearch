@@ -8,12 +8,6 @@
 
 import Foundation
 
-extension Optional where Wrapped == URLResponse  {
-    var statusCodeIsOK: Bool {
-        return (self as? HTTPURLResponse)?.statusCode == 200
-    }
-}
-
 struct TableDataSourceFactoryTemplate: TableDataSourcerMaker {
     let urlMaker: URLMaking
     let parser: JSONParsering
@@ -47,13 +41,12 @@ class TableDataSource: TableDataSourcer{
         self.items = []
     }
     
-    func giveNext(_ quantity: Int) {
+    func loadData(amount: Int) {
         guard moreResultsAvaliable,
-            let url = urlMaker.makeURL(query: searchTerm, offset: items.count, limit: quantity)
+            let url = urlMaker.makeURL(query: searchTerm, offset: items.count, limit: amount)
             else { return }
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard error == nil,
-                response.statusCodeIsOK,
                 let data = data,
                 let items = self?.parseJSON(data)
                 else { return }

@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIImage {
-    public convenience init?(inCircleOfSize size: CGSize = CGSize(width: 1, height: 1), label label: String) {
+    public convenience init?(inCircleOfRadius radius: Int, withLabel label: String) {
         
         // MARK: - utilities
         
@@ -34,6 +34,7 @@ public extension UIImage {
             }
         }
         
+        let size = CGSize(width: radius, height: radius)
         let rect = CGRect(origin: .zero, size: size)
         
         func drowCircle() {

@@ -23,15 +23,15 @@ protocol JSONParsering {
 protocol TableDataSourcer {
     var count: Int {get}
     subscript (index: Int) -> CellDataSourcer {get}
-    func giveNext(_: Int)
+    func loadData(amount: Int)
 }
 
 protocol TableDataSourcerMaker {
     func make(query: String, completion: @escaping () -> ()) ->  TableDataSourcer
 }
 
-struct EmptyTableDataSource: TableDataSourcer {
+struct TableDataSourceNullObject: TableDataSourcer {
     let count = 0
-    subscript(index: Int) -> CellDataSourcer { fatalError() }
-    func giveNext(_: Int) { fatalError() }
+    subscript(index: Int) -> CellDataSourcer { fatalError("TableDataSourcer did not set") }
+    func loadData(amount: Int) { fatalError("TableDataSourcer did not set") }
 }

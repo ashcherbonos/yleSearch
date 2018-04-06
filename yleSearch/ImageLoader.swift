@@ -30,7 +30,7 @@ struct ImageLoader {
     
     private let cache = ImageCash()
     
-    func load( url: URL?, intoImageView imageView: UIImageView?, withStub title: String){
+    func load( url: URL?, intoImageView imageView: UIImageView?, complition: ((Bool)->())? = nil ){
         
         guard let guardedImageView = imageView,
             let url = url
@@ -38,21 +38,24 @@ struct ImageLoader {
         
         if let cachedImage = cache[url] {
             guardedImageView.image = cachedImage
+            complition?(true)
             return
         }
         
-        makeStub(for: guardedImageView, withLabel: title)
-        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard error == nil, response.statusCodeIsOK,
+            guard error == nil,
                 let data = data,
                 let image = UIImage(data: data)
-                else { return }
+                else {
+                    DispatchQueue.main.async { complition?(false) }
+                    return
+            }
             self.cache[url] = image
             DispatchQueue.main.async {
                 guard let stillExistingImageView = imageView
                     else { return }
                 self.animateAppearance(image, in: stillExistingImageView)
+                complition?(true)
             }
         }
         task.resume()
@@ -62,15 +65,18 @@ struct ImageLoader {
         cache.empty()
     }
     
-    private func makeStub(for imageView: UIImageView, withLabel label: String){
-        imageView.image = UIImage(inCircleOfSize: CGSize(width: 52 , height: 52), label: label)
+    func makeStub(for imageView: UIImageView, withLabel label: String){
+        let radius = Constants.previewImageSize
+        imageView.image = UIImage(inCircleOfRadius: radius, withLabel: label)
     }
     
     private func animateAppearance(_ image: UIImage, in imageView: UIImageView){
         UIView.transition(with: imageView,
-                          duration: 0.5,
+                          duration: Constants.imagesFadeInDuration,
                           options: [.transitionCrossDissolve],
                           animations: { imageView.image = image },
                           completion: nil)
     }
 }
+
+

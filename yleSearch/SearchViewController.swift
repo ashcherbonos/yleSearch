@@ -88,10 +88,15 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
         let programm = viewModel.getData(for: indexPath.row)
+        fill(cell: cell, withData: programm)
+        return cell
+    }
+    
+    private func fill(cell: UITableViewCell, withData programm: TvProgramm){
         cell.textLabel?.text = programm.title
         cell.detailTextLabel?.text = programm.description
-        imageLoader.load(url: programm.previewImageURL(size: cell.bounds.height), intoImageView: cell.imageView, withStub: programm.title)
-        return cell
+        imageLoader.makeStub(for: cell.imageView!, withLabel: programm.title)
+        imageLoader.load(url: programm.previewImageURL(size: cell.bounds.height), intoImageView: cell.imageView)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
