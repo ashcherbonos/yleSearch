@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E40CE7B42076239E00FBCC57 /* UIView + fadeIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40CE7B32076239E00FBCC57 /* UIView + fadeIn.swift */; };
 		E46B02E02076A2DA009773AA /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46B02DF2076A2DA009773AA /* SearchViewModel.swift */; };
 		E46B02E22076CED7009773AA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46B02E12076CED7009773AA /* Constants.swift */; };
 		E46B02E420777ED4009773AA /* TvProgramm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46B02E320777ED4009773AA /* TvProgramm.swift */; };
+		E46B02E720778287009773AA /* Logo-iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = E46B02E620778287009773AA /* Logo-iOS.png */; };
 		E47F063E206A3EA800AB7F20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47F063D206A3EA800AB7F20 /* AppDelegate.swift */; };
 		E47F0640206A3EA800AB7F20 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47F063F206A3EA800AB7F20 /* SearchViewController.swift */; };
 		E47F0643206A3EA800AB7F20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E47F0641206A3EA800AB7F20 /* Main.storyboard */; };
@@ -25,10 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E40CE7B32076239E00FBCC57 /* UIView + fadeIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + fadeIn.swift"; sourceTree = "<group>"; };
 		E46B02DF2076A2DA009773AA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		E46B02E12076CED7009773AA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E46B02E320777ED4009773AA /* TvProgramm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvProgramm.swift; sourceTree = "<group>"; };
+		E46B02E620778287009773AA /* Logo-iOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo-iOS.png"; sourceTree = "<group>"; };
 		E47F063A206A3EA800AB7F20 /* yleSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yleSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E47F063D206A3EA800AB7F20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E47F063F206A3EA800AB7F20 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -59,9 +59,18 @@
 			isa = PBXGroup;
 			children = (
 				E4A0D89D20738A09002EB008 /* UIImage + PreviewStubImage.swift */,
-				E40CE7B32076239E00FBCC57 /* UIView + fadeIn.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E46B02E52077803D009773AA /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E47F064F206A4C6300AB7F20 /* TableDataSourceAbstraction.swift */,
+				E4860F3320711493005B181A /* YleTableDataSourceConcrition.swift */,
+				E4860F3120710762005B181A /* TableDataSourceProtocols.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		E47F0631206A3EA800AB7F20 = {
@@ -87,8 +96,10 @@
 				E4CBD2F6206D53820055BAD9 /* ProgrammDetailsViewController.swift */,
 				E46B02DE2076929E009773AA /* View */,
 				E47F063F206A3EA800AB7F20 /* SearchViewController.swift */,
+				E46B02E620778287009773AA /* Logo-iOS.png */,
 				E46B02DF2076A2DA009773AA /* SearchViewModel.swift */,
 				E4860F35207238A2005B181A /* ImageLoader.swift */,
+				E46B02E12076CED7009773AA /* Constants.swift */,
 				E4CBD2F3206BA86B0055BAD9 /* Model */,
 				E47F0641206A3EA800AB7F20 /* Main.storyboard */,
 				E47F0644206A3EA800AB7F20 /* Assets.xcassets */,
@@ -101,11 +112,8 @@
 		E4CBD2F3206BA86B0055BAD9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E47F064F206A4C6300AB7F20 /* TableDataSourceAbstraction.swift */,
-				E4860F3320711493005B181A /* YleTableDataSourceConcrition.swift */,
-				E46B02E12076CED7009773AA /* Constants.swift */,
+				E46B02E52077803D009773AA /* Networking */,
 				E46B02E320777ED4009773AA /* TvProgramm.swift */,
-				E4860F3120710762005B181A /* TableDataSourceProtocols.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,6 +177,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E46B02E720778287009773AA /* Logo-iOS.png in Resources */,
 				E47F0648206A3EA800AB7F20 /* LaunchScreen.storyboard in Resources */,
 				E47F0645206A3EA800AB7F20 /* Assets.xcassets in Resources */,
 				E47F0643206A3EA800AB7F20 /* Main.storyboard in Resources */,
@@ -187,7 +196,6 @@
 				E47F0640206A3EA800AB7F20 /* SearchViewController.swift in Sources */,
 				E4A0D89E20738A09002EB008 /* UIImage + PreviewStubImage.swift in Sources */,
 				E47F0650206A4C6300AB7F20 /* TableDataSourceAbstraction.swift in Sources */,
-				E40CE7B42076239E00FBCC57 /* UIView + fadeIn.swift in Sources */,
 				E4860F3420711493005B181A /* YleTableDataSourceConcrition.swift in Sources */,
 				E4CBD2F7206D53820055BAD9 /* ProgrammDetailsViewController.swift in Sources */,
 				E4860F36207238A2005B181A /* ImageLoader.swift in Sources */,
