@@ -66,8 +66,7 @@ struct ImageLoader {
     }
     
     func makeStub(for imageView: UIImageView, withLabel label: String){
-        let radius = AppConstants.previewImageSize
-        imageView.image = UIImage(inCircleOfRadius: radius, withLabel: label)
+        imageView.image = UIImage(withStubLabel: label)
     }
     
     private func animateAppearance(_ image: UIImage, in imageView: UIImageView){

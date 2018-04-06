@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIImage {
-    public convenience init?(inCircleOfRadius radius: Int, withLabel label: String) {
+    public convenience init?(withStubLabel label: String) {
         
         // MARK: - utilities
         
@@ -34,17 +34,20 @@ public extension UIImage {
             }
         }
         
-        let size = CGSize(width: radius, height: radius)
-        let rect = CGRect(origin: .zero, size: size)
-        
+        let side = AppConstants.previewImageFullSize
+        let diameter = AppConstants.previewImageDiameter
+        let border = AppConstants.previewImageWhiteBorder
+        let fullRect = CGRect(origin: .zero, size: CGSize(width: side, height: side))
+        let rectOverCircle = CGRect(origin: CGPoint(x: border, y: border), size: CGSize(width: diameter, height: diameter))
+
         func drowCircle() {
-            let circle = UIBezierPath(ovalIn: rect.insetBy(dx: 2, dy: 2))
+            let circle = UIBezierPath(ovalIn: rectOverCircle)
             randomColor.setFill()
             circle.fill()
         }
         
         var attributes:[NSAttributedStringKey: Any] {
-            let font = UIFont.preferredFont(forTextStyle: .body).withSize(size.height*0.8)
+            let font = UIFont.preferredFont(forTextStyle: .body).withSize(rectOverCircle.height*0.8)
             let paragrafSyle = NSMutableParagraphStyle()
             paragrafSyle.alignment = .center
             return [.paragraphStyle:paragrafSyle, .font:font, .foregroundColor:UIColor.white]
@@ -52,12 +55,12 @@ public extension UIImage {
         
         func drowFirstCharOfTitle() {
             let stringToDraw = String((label.first) ?? "Y") as NSString
-            stringToDraw.draw(in: rect, withAttributes: attributes)
+            stringToDraw.draw(in: rectOverCircle, withAttributes: attributes)
         }
         
         // MARK: - ImageContext
         
-        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
+        UIGraphicsBeginImageContextWithOptions(fullRect.size, false, 0.0)
         drowCircle()
         drowFirstCharOfTitle()
         let image = UIGraphicsGetImageFromCurrentImageContext()

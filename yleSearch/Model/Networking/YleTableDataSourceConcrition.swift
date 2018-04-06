@@ -54,13 +54,12 @@ struct YleTableDataSourcerFactory: TableDataSourcerMaker {
     }
 }
 
-
 extension TvProgramm {
-    func previewImageURL(size: CGFloat) -> URL? {
+    func previewImageURL(size: Int) -> URL? {
         guard let imageID = imageID else { return nil }
-        let width = Int(size)
+        let width = size
         let height = width
-        let fillMode = "c_thumb,r_max"
+        let fillMode = "c_thumb,r_max/bo_\(AppConstants.previewImageWhiteBorder)px_solid_white"
         let imageFormat = ".png"
         let urlString = "https://images.cdn.yle.fi/image/upload/w_\(width),h_\(height),\(fillMode)/\(imageID)\(imageFormat)"
         return URL(string: urlString)

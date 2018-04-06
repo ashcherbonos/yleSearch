@@ -95,8 +95,10 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     private func fill(cell: UITableViewCell, withData programm: TvProgramm){
         cell.textLabel?.text = programm.title
         cell.detailTextLabel?.text = programm.description
+        
         imageLoader.makeStub(for: cell.imageView!, withLabel: programm.title)
-        imageLoader.load(url: programm.previewImageURL(size: cell.bounds.height), intoImageView: cell.imageView)
+        let url = programm.previewImageURL(size: AppConstants.previewImageDiameter)
+        imageLoader.load(url: url, intoImageView: cell.imageView)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
