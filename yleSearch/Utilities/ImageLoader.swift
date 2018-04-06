@@ -52,7 +52,7 @@ struct ImageLoader {
             }
             self.cache[url] = image
             DispatchQueue.main.async {
-                guard let stillExistingImageView = imageView
+                guard let stillExistingImageView = imageView // TODO: - check if imageView still expected this(!) url
                     else { return }
                 self.animateAppearance(image, in: stillExistingImageView)
                 complition?(true)
@@ -66,7 +66,9 @@ struct ImageLoader {
     }
     
     func makeStub(for imageView: UIImageView, withLabel label: String){
-        imageView.image = UIImage(withStubLabel: label)
+        let size = CGSize(width: AppConstants.previewImageFullSize, height: AppConstants.previewImageFullSize)
+        let diameter = CGFloat(AppConstants.previewImageDiameter)
+        imageView.image = UIImage(size: size, withCircleDiametr: diameter,  stubChar: label.first)
     }
     
     private func animateAppearance(_ image: UIImage, in imageView: UIImageView){

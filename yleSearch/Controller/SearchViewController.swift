@@ -97,7 +97,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         cell.detailTextLabel?.text = programm.description
         
         imageLoader.makeStub(for: cell.imageView!, withLabel: programm.title)
-        let url = programm.previewImageURL(size: AppConstants.previewImageDiameter)
+        let url = programm.previewImageURL
         imageLoader.load(url: url, intoImageView: cell.imageView)
     }
     

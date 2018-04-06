@@ -55,9 +55,9 @@ struct YleTableDataSourcerFactory: TableDataSourcerMaker {
 }
 
 extension TvProgramm {
-    func previewImageURL(size: Int) -> URL? {
+    var previewImageURL: URL? {
         guard let imageID = imageID else { return nil }
-        let width = size
+        let width = AppConstants.previewImageFullSize
         let height = width
         let fillMode = "c_thumb,r_max/bo_\(AppConstants.previewImageWhiteBorder)px_solid_white"
         let imageFormat = ".png"
