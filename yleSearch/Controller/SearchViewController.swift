@@ -64,7 +64,9 @@ extension SearchViewController:  UISearchControllerDelegate, UISearchBarDelegate
         self.searchController.delegate = self
         self.searchController.searchBar.delegate = self
         self.searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.dimsBackgroundDuringPresentation = true
+        self.searchController.dimsBackgroundDuringPresentation = false
+        self.searchController.searchBar.tintColor = AppConstants.searchBarTintColor
+        self.searchController.searchBar.showsCancelButton = false
         self.navigationItem.titleView = searchController.searchBar
         self.definesPresentationContext = true
     }
@@ -95,7 +97,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     private func fill(cell: UITableViewCell,withData programm: TvProgramm){
         cell.textLabel?.text = programm.title
         cell.detailTextLabel?.text = programm.description
-        
         imageLoader.makeStub(for: cell.imageView!, withLabel: programm.title)
         let url = programm.previewImageURL
         imageLoader.load(url: url,
@@ -107,7 +108,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     private func checkIf(cell: UITableViewCell, expectsPreviewURL url: URL) -> Bool {
         guard let cellDataIndex = tableView.indexPath(for: cell)?.row,
             let cellExpectedUrl = viewModel.getData(for: cellDataIndex).previewImageURL
-            else { return false}
+            else { return false }
         return url == cellExpectedUrl
     }
     
