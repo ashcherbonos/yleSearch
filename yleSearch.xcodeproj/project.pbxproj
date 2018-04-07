@@ -16,9 +16,9 @@
 		E47F0643206A3EA800AB7F20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E47F0641206A3EA800AB7F20 /* Main.storyboard */; };
 		E47F0645206A3EA800AB7F20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E47F0644206A3EA800AB7F20 /* Assets.xcassets */; };
 		E47F0648206A3EA800AB7F20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E47F0646206A3EA800AB7F20 /* LaunchScreen.storyboard */; };
-		E47F0650206A4C6300AB7F20 /* TableDataSourceAbstraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47F064F206A4C6300AB7F20 /* TableDataSourceAbstraction.swift */; };
+		E47F0650206A4C6300AB7F20 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47F064F206A4C6300AB7F20 /* TableDataSource.swift */; };
 		E4860F3220710762005B181A /* TableDataSourceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4860F3120710762005B181A /* TableDataSourceProtocols.swift */; };
-		E4860F3420711493005B181A /* YleTableDataSourceConcrition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4860F3320711493005B181A /* YleTableDataSourceConcrition.swift */; };
+		E4860F3420711493005B181A /* YleTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4860F3320711493005B181A /* YleTableDataSource.swift */; };
 		E4860F36207238A2005B181A /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4860F35207238A2005B181A /* ImageLoader.swift */; };
 		E4A0D89E20738A09002EB008 /* UIImage + PreviewStubImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0D89D20738A09002EB008 /* UIImage + PreviewStubImage.swift */; };
 		E4CBD2F7206D53820055BAD9 /* ProgrammDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CBD2F6206D53820055BAD9 /* ProgrammDetailsViewController.swift */; };
@@ -36,9 +36,9 @@
 		E47F0644206A3EA800AB7F20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E47F0647206A3EA800AB7F20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E47F0649206A3EA800AB7F20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E47F064F206A4C6300AB7F20 /* TableDataSourceAbstraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSourceAbstraction.swift; sourceTree = "<group>"; };
+		E47F064F206A4C6300AB7F20 /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
 		E4860F3120710762005B181A /* TableDataSourceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSourceProtocols.swift; sourceTree = "<group>"; };
-		E4860F3320711493005B181A /* YleTableDataSourceConcrition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YleTableDataSourceConcrition.swift; sourceTree = "<group>"; };
+		E4860F3320711493005B181A /* YleTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YleTableDataSource.swift; sourceTree = "<group>"; };
 		E4860F35207238A2005B181A /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		E4A0D89D20738A09002EB008 /* UIImage + PreviewStubImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + PreviewStubImage.swift"; sourceTree = "<group>"; };
 		E4CBD2F6206D53820055BAD9 /* ProgrammDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammDetailsViewController.swift; sourceTree = "<group>"; };
@@ -67,9 +67,8 @@
 		E46B02E52077803D009773AA /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				E47F064F206A4C6300AB7F20 /* TableDataSourceAbstraction.swift */,
-				E4860F3320711493005B181A /* YleTableDataSourceConcrition.swift */,
-				E4860F3120710762005B181A /* TableDataSourceProtocols.swift */,
+				E4ACEE7C2078D55C005AD4B6 /* Abstraction */,
+				E4ACEE7D2078D56B005AD4B6 /* Concrition */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -131,6 +130,23 @@
 				E47F0649206A3EA800AB7F20 /* Info.plist */,
 			);
 			path = yleSearch;
+			sourceTree = "<group>";
+		};
+		E4ACEE7C2078D55C005AD4B6 /* Abstraction */ = {
+			isa = PBXGroup;
+			children = (
+				E47F064F206A4C6300AB7F20 /* TableDataSource.swift */,
+				E4860F3120710762005B181A /* TableDataSourceProtocols.swift */,
+			);
+			path = Abstraction;
+			sourceTree = "<group>";
+		};
+		E4ACEE7D2078D56B005AD4B6 /* Concrition */ = {
+			isa = PBXGroup;
+			children = (
+				E4860F3320711493005B181A /* YleTableDataSource.swift */,
+			);
+			path = Concrition;
 			sourceTree = "<group>";
 		};
 		E4CBD2F3206BA86B0055BAD9 /* Model */ = {
@@ -219,8 +235,8 @@
 				E4860F3220710762005B181A /* TableDataSourceProtocols.swift in Sources */,
 				E47F0640206A3EA800AB7F20 /* SearchViewController.swift in Sources */,
 				E4A0D89E20738A09002EB008 /* UIImage + PreviewStubImage.swift in Sources */,
-				E47F0650206A4C6300AB7F20 /* TableDataSourceAbstraction.swift in Sources */,
-				E4860F3420711493005B181A /* YleTableDataSourceConcrition.swift in Sources */,
+				E47F0650206A4C6300AB7F20 /* TableDataSource.swift in Sources */,
+				E4860F3420711493005B181A /* YleTableDataSource.swift in Sources */,
 				E4CBD2F7206D53820055BAD9 /* ProgrammDetailsViewController.swift in Sources */,
 				E4860F36207238A2005B181A /* ImageLoader.swift in Sources */,
 				E47F063E206A3EA800AB7F20 /* AppDelegate.swift in Sources */,
