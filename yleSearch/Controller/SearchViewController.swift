@@ -10,14 +10,9 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-    lazy var viewModel = SearchViewModel(delegate: self)
-    private let cellIdentifier: String = "SearchResultCell"
-    private var searchController: UISearchController!
-    private var imageLoader = ImageLoader()
-    
     @IBOutlet weak var tableView: UITableView!
-    
-//    lazy var dismissKeyboardOnTapRecognizer = UITapGestureRecognizer(target:self, action: #selector(dismissKeyboard))
+    lazy var viewModel = SearchViewModel(delegate: self)
+    private var searchController: UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +21,7 @@ class SearchViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        imageLoader.emptyCache()
+        viewModel.didReceiveMemoryWarning()
     }
 }
 
@@ -44,10 +39,10 @@ extension SearchViewController: SearchViewModelDelegate {
 extension SearchViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailsVC = segue.destination as? ProgrammDetailsViewController,
-            let programmIndex = tableView.indexPathForSelectedRow?.row
+        guard let detailsVC = segue.destination as? DataConsumer,
+            let selectedCellIndex = tableView.indexPathForSelectedRow?.row
             else { return }
-        detailsVC.programm = viewModel.getData(for: programmIndex)
+        viewModel.fill(consumer: detailsVC, withIndex: selectedCellIndex)
     }
 }
 
@@ -55,7 +50,7 @@ extension SearchViewController {
 
 extension SearchViewController:  UISearchControllerDelegate, UISearchBarDelegate {
     
-    @objc func dismissKeyboard() {
+    func dismissKeyboard() {
         searchController.resignFirstResponder()
     }
     
@@ -88,28 +83,9 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)!
-        let programm = viewModel.getData(for: indexPath.row)
-        fill(cell: cell, withData: programm)
+        let cell = tableView.dequeueReusableCell(withIdentifier: AppConstants.cellIdentifier)!
+        viewModel.fill(consumer: cell as! DataConsumer, withIndex: indexPath.row)
         return cell
-    }
-    
-    private func fill(cell: UITableViewCell,withData programm: TvProgramm){
-        cell.textLabel?.text = programm.title
-        cell.detailTextLabel?.text = programm.description
-        imageLoader.makeStub(for: cell.imageView!, withLabel: programm.title)
-        let url = programm.previewImageURL
-        imageLoader.load(url: url,
-                         intoImageView: cell.imageView!,
-                         urlGuarder: { [weak self] url in
-                            return self?.checkIf(cell: cell, expectsPreviewURL: url) ?? false })
-    }
-    
-    private func checkIf(cell: UITableViewCell, expectsPreviewURL url: URL) -> Bool {
-        guard let cellDataIndex = tableView.indexPath(for: cell)?.row,
-            let cellExpectedUrl = viewModel.getData(for: cellDataIndex).previewImageURL
-            else { return false }
-        return url == cellExpectedUrl
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

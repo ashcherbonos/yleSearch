@@ -8,33 +8,24 @@
 
 import UIKit
 
-fileprivate extension URL {
-    var NSString: NSString { return self.absoluteString as NSString}
+protocol ImageLoaderDelegate: class {
+    func imageDidLoad (success: Bool)
 }
 
-fileprivate class ImageCash {
+class ImageLoader {
     
-    private let cache = NSCache<NSString, UIImage>()
+    weak var delegate: ImageLoaderDelegate?
+    private let cache: ImageCacher
     
-    subscript(url: URL) -> UIImage?{
-        get { return cache.object(forKey: url.NSString) }
-        set { cache.setObject(newValue!, forKey: url.NSString) }
+    init(cache: ImageCacher) {
+        self.cache = cache
     }
     
-    func empty() {
-        cache.removeAllObjects()
-    }
-}
-
-struct ImageLoader {
-    
-    private let cache = ImageCash()
-    
-    func load( url: URL?, intoImageView imageView: UIImageView, urlGuarder: @escaping ((URL)->Bool) = {_ in return true}, complition: @escaping ((Bool)->()) = {_ in} ){
+    func load( url: URL?, intoImageView imageView: UIImageView){
         guard let url = url else {return}
         if let cachedImage = cache[url] {
             imageView.image = cachedImage
-            complition(true)
+            delegate?.imageDidLoad(success: true)
             return
         }
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -42,21 +33,19 @@ struct ImageLoader {
                 let data = data,
                 let image = UIImage(data: data)
                 else {
-                    DispatchQueue.main.async { complition(false) }
+                    DispatchQueue.main.async { [weak self] in
+                        self?.delegate?.imageDidLoad(success: false)
+                    }
                     return
             }
             self.cache[url] = image
-            DispatchQueue.main.async {
-                guard urlGuarder(url) else { return }
-                self.animateAppearance(image, in: imageView)
-                complition(true)
+            DispatchQueue.main.async { [weak self] in
+                self?.animateAppearance(image, in: imageView)
+                //imageView.image = image
+                self?.delegate?.imageDidLoad(success: true)
             }
         }
         task.resume()
-    }
-    
-    func emptyCache() {
-        cache.empty()
     }
     
     func makeStub(for imageView: UIImageView, withLabel label: String){

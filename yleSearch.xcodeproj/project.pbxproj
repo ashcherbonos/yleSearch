@@ -21,6 +21,8 @@
 		E4860F3420711493005B181A /* YleTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4860F3320711493005B181A /* YleTableDataSource.swift */; };
 		E4860F36207238A2005B181A /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4860F35207238A2005B181A /* ImageLoader.swift */; };
 		E4A0D89E20738A09002EB008 /* UIImage + PreviewStubImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0D89D20738A09002EB008 /* UIImage + PreviewStubImage.swift */; };
+		E4ACEE7F2078D8CE005AD4B6 /* TvProgrammTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ACEE7E2078D8CE005AD4B6 /* TvProgrammTableViewCell.swift */; };
+		E4ACEE8120791CD6005AD4B6 /* ImageCach.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ACEE8020791CD6005AD4B6 /* ImageCach.swift */; };
 		E4CBD2F7206D53820055BAD9 /* ProgrammDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CBD2F6206D53820055BAD9 /* ProgrammDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		E4860F3320711493005B181A /* YleTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YleTableDataSource.swift; sourceTree = "<group>"; };
 		E4860F35207238A2005B181A /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		E4A0D89D20738A09002EB008 /* UIImage + PreviewStubImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + PreviewStubImage.swift"; sourceTree = "<group>"; };
+		E4ACEE7E2078D8CE005AD4B6 /* TvProgrammTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvProgrammTableViewCell.swift; sourceTree = "<group>"; };
+		E4ACEE8020791CD6005AD4B6 /* ImageCach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCach.swift; sourceTree = "<group>"; };
 		E4CBD2F6206D53820055BAD9 /* ProgrammDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +64,7 @@
 			children = (
 				E4A0D89D20738A09002EB008 /* UIImage + PreviewStubImage.swift */,
 				E4860F35207238A2005B181A /* ImageLoader.swift */,
+				E4ACEE8020791CD6005AD4B6 /* ImageCach.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -88,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				E47F063F206A3EA800AB7F20 /* SearchViewController.swift */,
+				E4ACEE7E2078D8CE005AD4B6 /* TvProgrammTableViewCell.swift */,
 				E4CBD2F6206D53820055BAD9 /* ProgrammDetailsViewController.swift */,
 			);
 			path = Controller;
@@ -231,8 +237,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4ACEE8120791CD6005AD4B6 /* ImageCach.swift in Sources */,
 				E46B02E02076A2DA009773AA /* SearchViewModel.swift in Sources */,
 				E4860F3220710762005B181A /* TableDataSourceProtocols.swift in Sources */,
+				E4ACEE7F2078D8CE005AD4B6 /* TvProgrammTableViewCell.swift in Sources */,
 				E47F0640206A3EA800AB7F20 /* SearchViewController.swift in Sources */,
 				E4A0D89E20738A09002EB008 /* UIImage + PreviewStubImage.swift in Sources */,
 				E47F0650206A4C6300AB7F20 /* TableDataSource.swift in Sources */,

@@ -8,8 +8,12 @@
 
 import UIKit
 
-protocol SearchViewModelDelegate {
+protocol SearchViewModelDelegate: class {
     func updateView()
+}
+
+protocol DataConsumer {
+    func fill(withData: TvProgramm, imageLoader: ImageLoader)
 }
 
 class SearchViewModel {
@@ -18,19 +22,21 @@ class SearchViewModel {
     var dataLastIndex: Int { return dataCount - 1 }
     var isReady: Bool { return !loadingData }
     
-    private let delegate: SearchViewModelDelegate
+    private weak var delegate: SearchViewModelDelegate?
     private let dataSourceFactory:TableDataSourcerMaker = YleTableDataSourcerFactory()
     private var dataSource: TableDataSourcer = TableDataSourceNullObject()
     private var loadingData = false
+    private let imageCache: ImageCacher
     
     init(delegate: SearchViewModelDelegate){
         self.delegate = delegate
+        imageCache = ImageCach()
     }
     
     func search(for query: String) {
         dataSource = dataSourceFactory.make(query: query) { [weak self] in
             self?.loadingData = false
-            self?.delegate.updateView()
+            self?.delegate?.updateView()
         }
         loadData()
     }
@@ -46,5 +52,14 @@ class SearchViewModel {
     private func loadData() {
         loadingData = true
         dataSource.loadData(amount: AppConstants.searchLimit)
+    }
+    
+    func fill(consumer: DataConsumer, withIndex index: Int){
+        let imageLoader = ImageLoader(cache: imageCache)
+        consumer.fill(withData: getData(for: index), imageLoader: imageLoader)
+    }
+    
+    func  didReceiveMemoryWarning() {
+        imageCache.empty()
     }
 }

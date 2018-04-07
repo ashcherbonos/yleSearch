@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="44" width="736" height="370"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultCell" textLabel="1tr-j3-FxO" detailTextLabel="Nc7-EZ-HDY" style="IBUITableViewCellStyleSubtitle" id="dsW-78-nAy">
+                                    <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultCell" textLabel="1tr-j3-FxO" detailTextLabel="Nc7-EZ-HDY" style="IBUITableViewCellStyleSubtitle" id="dsW-78-nAy" customClass="TvProgrammTableViewCell" customModule="yleSearch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="736" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dsW-78-nAy" id="PJI-ga-BJe">
