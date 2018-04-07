@@ -17,7 +17,7 @@ protocol ImageCacher: class {
     func empty()
 }
 
-class ImageCach: ImageCacher {
+class ImageCache: ImageCacher {
     
     private let cache = NSCache<NSString, UIImage>()
     

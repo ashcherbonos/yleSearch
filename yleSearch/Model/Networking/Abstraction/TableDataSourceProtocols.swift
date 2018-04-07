@@ -10,28 +10,28 @@ import Foundation
 
 typealias JSONDictionary = [String: Any]
 
-protocol CellDataSourcer {}
+protocol CellDataSource {}
 
-protocol URLMaking  {
+protocol URLMaker  {
     func makeURL(query: String, offset: Int, limit: Int) -> URL?
 }
 
-protocol JSONParsering {
-    func parse(_ jsonDictionary: JSONDictionary) -> [CellDataSourcer]
+protocol JSONParser {
+    func parse(_ jsonDictionary: JSONDictionary) -> [CellDataSource]
 }
 
-protocol TableDataSourcer {
+protocol TableDataSource {
     var count: Int {get}
-    subscript (index: Int) -> CellDataSourcer {get}
+    subscript (index: Int) -> CellDataSource {get}
     func loadData(amount: Int)
 }
 
 protocol TableDataSourcerMaker {
-    func make(query: String, completion: @escaping () -> ()) ->  TableDataSourcer
+    func make(query: String, completion: @escaping () -> ()) ->  TableDataSource
 }
 
-struct TableDataSourceNullObject: TableDataSourcer {
+struct TableDataSourceNullObject: TableDataSource {
     let count = 0
-    subscript(index: Int) -> CellDataSourcer { fatalError("TableDataSourcer did not set") }
+    subscript(index: Int) -> CellDataSource { fatalError("TableDataSourcer did not set") }
     func loadData(amount: Int) { fatalError("TableDataSourcer did not set") }
 }

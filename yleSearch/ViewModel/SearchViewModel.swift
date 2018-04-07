@@ -13,27 +13,29 @@ protocol SearchViewModelDelegate: class {
 }
 
 protocol DataConsumer {
-    typealias ConcreteData = DependencyManager.ConcretDataType
-    func fill(withData: ConcreteData, imageLoader: ImageLoader)
+    func fill(withData: CellDataSource, imageLoader: ImageLoader)
 }
 
 class SearchViewModel {
-    typealias ConcreteData = DependencyManager.ConcretDataType
-    typealias ConcretSourcerFactory = DependencyManager.ConcretSourcerFactory
+
+    // MARK: - Dependency Managment
+    typealias ConcreteSourcerFactory = YleTableDataSourcerFactory
+    typealias ConcreteImageLoader = ImageLoaderWithFadeIn
+    typealias ConcreteImageCacher = ImageCache
     
     var dataCount: Int { return dataSource.count}
     var dataLastIndex: Int { return dataCount - 1 }
     var isReady: Bool { return !loadingData }
     
     private weak var delegate: SearchViewModelDelegate?
-    private let dataSourceFactory:TableDataSourcerMaker = ConcretSourcerFactory()
-    private var dataSource: TableDataSourcer = TableDataSourceNullObject()
+    private let dataSourceFactory:TableDataSourcerMaker = ConcreteSourcerFactory()
+    private var dataSource: TableDataSource = TableDataSourceNullObject()
     private var loadingData = false
     private let imageCache: ImageCacher
     
     init(delegate: SearchViewModelDelegate){
         self.delegate = delegate
-        imageCache = ImageCach()
+        imageCache = ConcreteImageCacher()
     }
     
     func search(for query: String) {
@@ -44,8 +46,8 @@ class SearchViewModel {
         loadData()
     }
     
-    func getData(for index: Int) -> ConcreteData {
-        return dataSource[index] as! ConcreteData
+    func getData(for index: Int) -> CellDataSource {
+        return dataSource[index]
     }
     
     func loadMoreData() {
@@ -58,7 +60,7 @@ class SearchViewModel {
     }
     
     func fill(consumer: DataConsumer, withIndex index: Int){
-        let imageLoader = ImageLoader(cache: imageCache)
+        let imageLoader = ConcreteImageLoader(cache: imageCache)
         consumer.fill(withData: getData(for: index), imageLoader: imageLoader)
     }
     

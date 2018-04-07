@@ -9,31 +9,31 @@
 import Foundation
 
 struct TableDataSourceFactoryTemplate: TableDataSourcerMaker {
-    let urlMaker: URLMaking
-    let parser: JSONParsering
+    let urlMaker: URLMaker
+    let parser: JSONParser
     
-    func make(query: String, completion: @escaping () -> ()) ->  TableDataSourcer {
-        return TableDataSource (searchTerm: query, urlMaker: urlMaker, parser: parser, completion:completion)
+    func make(query: String, completion: @escaping () -> ()) ->  TableDataSource {
+        return TableDataSourceTemplate (searchTerm: query, urlMaker: urlMaker, parser: parser, completion:completion)
     }
 }
 
-class TableDataSource: TableDataSourcer{
+class TableDataSourceTemplate: TableDataSource{
     var count:Int {return items.count}
     
-    subscript(index: Int) -> CellDataSourcer {
+    subscript(index: Int) -> CellDataSource {
         get{
             return items[index]
         }
     }
     
-    private var items: [CellDataSourcer]
+    private var items: [CellDataSource]
     private let searchTerm: String
-    private let parser: JSONParsering
-    private let urlMaker: URLMaking
+    private let parser: JSONParser
+    private let urlMaker: URLMaker
     private let completion: () -> ()
     private var moreResultsAvaliable = true;
     
-    init(searchTerm: String, urlMaker: URLMaking, parser: JSONParsering, completion: @escaping () -> ()) {
+    init(searchTerm: String, urlMaker: URLMaker, parser: JSONParser, completion: @escaping () -> ()) {
         self.searchTerm = searchTerm
         self.urlMaker = urlMaker
         self.parser = parser
@@ -57,7 +57,7 @@ class TableDataSource: TableDataSourcer{
         task.resume()
     }
     
-    private func parseJSON(_ jsonData: Data) -> [CellDataSourcer]? {
+    private func parseJSON(_ jsonData: Data) -> [CellDataSource]? {
         guard let json = (try? JSONSerialization.jsonObject(with: jsonData, options: [])) as? JSONDictionary else { return nil }
         return parser.parse(json)
     }

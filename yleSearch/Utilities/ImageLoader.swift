@@ -12,12 +12,20 @@ protocol ImageLoaderDelegate: class {
     func imageDidLoad (success: Bool)
 }
 
-class ImageLoader {
+protocol ImageLoader {
+    init(cache: ImageCacher)
+    var delegate: ImageLoaderDelegate? {get set}
+    func load( url: URL?, intoImageView: UIImageView)
+    func makeStub(for: UIImageView, withLabel: String)
+}
+
+class ImageLoaderWithFadeIn: ImageLoader {
     
     weak var delegate: ImageLoaderDelegate?
+    
     private let cache: ImageCacher
     
-    init(cache: ImageCacher) {
+    required init(cache: ImageCacher) {
         self.cache = cache
     }
     
@@ -40,7 +48,7 @@ class ImageLoader {
             }
             self.cache[url] = image
             DispatchQueue.main.async { [weak self] in
-                self?.animateAppearance(image, in: imageView)
+                self?.fadeIn(image, in: imageView)
                 //imageView.image = image
                 self?.delegate?.imageDidLoad(success: true)
             }
@@ -54,7 +62,7 @@ class ImageLoader {
         imageView.image = UIImage(size: size, withCircleDiametr: diameter,  stubChar: label.first)
     }
     
-    private func animateAppearance(_ image: UIImage, in imageView: UIImageView){
+    private func fadeIn(_ image: UIImage, in imageView: UIImageView){
         UIView.transition(with: imageView,
                           duration: AppConstants.imagesFadeInDuration,
                           options: [.transitionCrossDissolve],

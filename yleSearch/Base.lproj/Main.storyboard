@@ -75,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="63.200000000000003" y="68.815592203898049"/>
         </scene>
-        <!--Programm Details View Controller-->
+        <!--Tv Programm Details View Controller-->
         <scene sceneID="LaZ-cM-YfR">
             <objects>
-                <viewController id="vuH-cm-Ggs" customClass="ProgrammDetailsViewController" customModule="yleSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vuH-cm-Ggs" customClass="TvProgrammDetailsViewController" customModule="yleSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ldR-pc-k8X">
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

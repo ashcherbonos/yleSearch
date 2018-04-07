@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TvProgramm: CellDataSourcer {
+struct TvProgramm: CellDataSource {
     let id: String
     let title: String
     let description: String

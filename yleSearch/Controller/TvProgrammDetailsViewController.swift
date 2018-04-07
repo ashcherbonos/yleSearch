@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProgrammDetailsViewController: UIViewController {
+class TvProgrammDetailsViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView! {didSet { imageLoader.load(url: programm?.fullImageURL, intoImageView: imageView) }}
     @IBOutlet weak var titleLabel: UILabel! {didSet { titleLabel.text = programm.title }}
@@ -21,16 +21,16 @@ class ProgrammDetailsViewController: UIViewController {
     private var imageLoader: ImageLoader!
 }
 
-extension ProgrammDetailsViewController: DataConsumer {
+extension TvProgrammDetailsViewController: DataConsumer {
     
-    func fill(withData programm: TvProgramm, imageLoader: ImageLoader) {
-        self.programm = programm
+    func fill(withData dataSource: CellDataSource, imageLoader: ImageLoader) {
+        self.programm = dataSource as! TvProgramm
         self.imageLoader = imageLoader
         self.imageLoader.delegate = self
     }
 }
 
-extension ProgrammDetailsViewController: ImageLoaderDelegate {
+extension TvProgrammDetailsViewController: ImageLoaderDelegate {
     
     func imageDidLoad(success: Bool) {
         activityIndicator.stopAnimating()

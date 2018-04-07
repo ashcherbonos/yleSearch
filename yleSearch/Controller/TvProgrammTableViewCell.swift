@@ -12,7 +12,8 @@ class TvProgrammTableViewCell: UITableViewCell, DataConsumer {
     
     private var imageLoader: ImageLoader!
     
-    func fill(withData programm: TvProgramm, imageLoader: ImageLoader){
+    func fill(withData dataSource: CellDataSource, imageLoader: ImageLoader){
+        let programm = dataSource as! TvProgramm
         textLabel!.text = programm.title
         detailTextLabel!.text = programm.description
         self.imageLoader = imageLoader

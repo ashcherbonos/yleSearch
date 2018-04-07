@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct YleURLMaker: URLMaking {
+struct YleURLMaker: URLMaker {
     func makeURL(query: String, offset: Int, limit: Int) -> URL? {
         let appKey = AppConstants.yleAppKey
         let searchURL = "https://external.api.yle.fi/v1/programs/items.json"
@@ -20,9 +20,9 @@ struct YleURLMaker: URLMaking {
     }
 }
 
-struct YleJSONParser: JSONParsering {
+struct YleJSONParser: JSONParser {
     
-    func parse(_ jsonDictionary: JSONDictionary) -> [CellDataSourcer] {
+    func parse(_ jsonDictionary: JSONDictionary) -> [CellDataSource] {
         guard let data = jsonDictionary["data"] as? [JSONDictionary] else { return []}
         return data.compactMap{parseProgramm($0)}
     }
@@ -76,7 +76,7 @@ struct YleTableDataSourcerFactory: TableDataSourcerMaker {
     
     private let factory = TableDataSourceFactoryTemplate(urlMaker: YleURLMaker(), parser: YleJSONParser())
     
-    func make(query: String, completion: @escaping () -> ()) ->  TableDataSourcer {
+    func make(query: String, completion: @escaping () -> ()) ->  TableDataSource {
         return factory.make(query: query, completion:completion)
     }
 }
