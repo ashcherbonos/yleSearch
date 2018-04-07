@@ -13,17 +13,20 @@ protocol SearchViewModelDelegate: class {
 }
 
 protocol DataConsumer {
-    func fill(withData: TvProgramm, imageLoader: ImageLoader)
+    typealias ConcreteData = DependencyManager.ConcretDataType
+    func fill(withData: ConcreteData, imageLoader: ImageLoader)
 }
 
 class SearchViewModel {
+    typealias ConcreteData = DependencyManager.ConcretDataType
+    typealias ConcretSourcerFactory = DependencyManager.ConcretSourcerFactory
     
     var dataCount: Int { return dataSource.count}
     var dataLastIndex: Int { return dataCount - 1 }
     var isReady: Bool { return !loadingData }
     
     private weak var delegate: SearchViewModelDelegate?
-    private let dataSourceFactory:TableDataSourcerMaker = YleTableDataSourcerFactory()
+    private let dataSourceFactory:TableDataSourcerMaker = ConcretSourcerFactory()
     private var dataSource: TableDataSourcer = TableDataSourceNullObject()
     private var loadingData = false
     private let imageCache: ImageCacher
@@ -41,8 +44,8 @@ class SearchViewModel {
         loadData()
     }
     
-    func getData(for index: Int) -> TvProgramm {
-        return dataSource[index] as! TvProgramm
+    func getData(for index: Int) -> ConcreteData {
+        return dataSource[index] as! ConcreteData
     }
     
     func loadMoreData() {

@@ -41,21 +41,12 @@ struct YleJSONParser: JSONParsering {
                           description: description,
                           dataModified: dataModified,
                           type: type,
-                          imageID: imageAvailable ? imageID : nil)
+                          imageID: imageAvailable ? imageID : nil,
+                          previewImageURL: previewImageURL(for: imageID),
+                          fullImageURL: fullImageURL(for: imageID))
     }
-}
-
-struct YleTableDataSourcerFactory: TableDataSourcerMaker {
     
-    private let factory = TableDataSourceFactoryTemplate(urlMaker: YleURLMaker(), parser: YleJSONParser())
-    
-    func make(query: String, completion: @escaping () -> ()) ->  TableDataSourcer {
-        return factory.make(query: query, completion:completion)
-    }
-}
-
-extension TvProgramm {
-    var previewImageURL: URL? {
+    func previewImageURL(for imageID: String?) -> URL? {
         guard let imageID = imageID else { return nil }
         let width = AppConstants.previewImageFullSize
         let height = width
@@ -65,7 +56,7 @@ extension TvProgramm {
         return URL(string: urlString)
     }
     
-    var fullImageURL: URL? {
+    func fullImageURL(for imageID: String?) -> URL? {
         guard let imageID = imageID else { return nil }
         let width = deviceScreenSmollerSideSize
         let height = width
@@ -81,3 +72,11 @@ extension TvProgramm {
     }
 }
 
+struct YleTableDataSourcerFactory: TableDataSourcerMaker {
+    
+    private let factory = TableDataSourceFactoryTemplate(urlMaker: YleURLMaker(), parser: YleJSONParser())
+    
+    func make(query: String, completion: @escaping () -> ()) ->  TableDataSourcer {
+        return factory.make(query: query, completion:completion)
+    }
+}

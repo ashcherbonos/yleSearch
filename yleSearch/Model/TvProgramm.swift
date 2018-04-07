@@ -15,4 +15,6 @@ struct TvProgramm: CellDataSourcer {
     let dataModified: String
     let type: String
     let imageID: String?
+    let previewImageURL: URL?
+    let fullImageURL: URL?
 }
