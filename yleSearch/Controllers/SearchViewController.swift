@@ -21,7 +21,7 @@ class SearchViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        viewModel.didReceiveMemoryWarning()
+        viewModel.emptyMemory()
     }
 }
 

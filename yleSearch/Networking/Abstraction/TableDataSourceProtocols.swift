@@ -17,7 +17,7 @@ protocol URLMaker  {
 }
 
 protocol JSONParser {
-    func parse(_ jsonDictionary: JSONDictionary) -> [CellDataSource]
+    func parse(_ jsonDictionary: Data) -> [CellDataSource]?
 }
 
 protocol TableDataSource {

@@ -23,8 +23,20 @@
 		E4A0D89E20738A09002EB008 /* UIImage + PreviewStubImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0D89D20738A09002EB008 /* UIImage + PreviewStubImage.swift */; };
 		E4ACEE7F2078D8CE005AD4B6 /* TvProgrammTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ACEE7E2078D8CE005AD4B6 /* TvProgrammTableViewCell.swift */; };
 		E4ACEE8120791CD6005AD4B6 /* ImageCach.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ACEE8020791CD6005AD4B6 /* ImageCach.swift */; };
+		E4C6FDD4207A3CF200AAE87B /* YleJSONParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C6FDD3207A3CF200AAE87B /* YleJSONParserTests.swift */; };
+		E4C6FDDA207A4ED900AAE87B /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = E4C6FDD9207A4ED900AAE87B /* test.json */; };
 		E4CBD2F7206D53820055BAD9 /* TvProgrammDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CBD2F6206D53820055BAD9 /* TvProgrammDetailsViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E4C6FDCE207A31A400AAE87B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E47F0632206A3EA800AB7F20 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E47F0639206A3EA800AB7F20;
+			remoteInfo = yleSearch;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		E46B02DF2076A2DA009773AA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -45,11 +57,22 @@
 		E4A0D89D20738A09002EB008 /* UIImage + PreviewStubImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + PreviewStubImage.swift"; sourceTree = "<group>"; };
 		E4ACEE7E2078D8CE005AD4B6 /* TvProgrammTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvProgrammTableViewCell.swift; sourceTree = "<group>"; };
 		E4ACEE8020791CD6005AD4B6 /* ImageCach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCach.swift; sourceTree = "<group>"; };
+		E4C6FDC9207A31A400AAE87B /* yleSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yleSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4C6FDCD207A31A400AAE87B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4C6FDD3207A3CF200AAE87B /* YleJSONParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YleJSONParserTests.swift; sourceTree = "<group>"; };
+		E4C6FDD9207A4ED900AAE87B /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		E4CBD2F6206D53820055BAD9 /* TvProgrammDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvProgrammDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E47F0637206A3EA800AB7F20 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4C6FDC6207A31A400AAE87B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -78,25 +101,24 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		E46B02E82077855C009773AA /* Supporting Files */ = {
+		E46B02E82077855C009773AA /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
 				E47F0644206A3EA800AB7F20 /* Assets.xcassets */,
-				E46B02E620778287009773AA /* Logo-iOS.png */,
 				E47F063D206A3EA800AB7F20 /* AppDelegate.swift */,
 				E47F0646206A3EA800AB7F20 /* LaunchScreen.storyboard */,
 			);
-			path = "Supporting Files";
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		E46B02E9207785C4009773AA /* Controller */ = {
+		E46B02E9207785C4009773AA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				E47F063F206A3EA800AB7F20 /* SearchViewController.swift */,
 				E4ACEE7E2078D8CE005AD4B6 /* TvProgrammTableViewCell.swift */,
 				E4CBD2F6206D53820055BAD9 /* TvProgrammDetailsViewController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		E46B02EA207785D2009773AA /* ViewModel */ = {
@@ -111,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				E47F063C206A3EA800AB7F20 /* yleSearch */,
+				E4C6FDCA207A31A400AAE87B /* yleSearchTests */,
 				E47F063B206A3EA800AB7F20 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -119,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				E47F063A206A3EA800AB7F20 /* yleSearch.app */,
+				E4C6FDC9207A31A400AAE87B /* yleSearchTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,11 +150,13 @@
 		E47F063C206A3EA800AB7F20 /* yleSearch */ = {
 			isa = PBXGroup;
 			children = (
-				E46B02E9207785C4009773AA /* Controller */,
+				E46B02E9207785C4009773AA /* Controllers */,
 				E46B02EA207785D2009773AA /* ViewModel */,
 				E4CBD2F3206BA86B0055BAD9 /* Model */,
+				E46B02E52077803D009773AA /* Networking */,
+				E4C6FDD5207A49E500AAE87B /* Resourses */,
+				E46B02E82077855C009773AA /* SupportingFiles */,
 				E46B02DE2076929E009773AA /* Utilities */,
-				E46B02E82077855C009773AA /* Supporting Files */,
 				E46B02E12076CED7009773AA /* AppConstants.swift */,
 				E47F0641206A3EA800AB7F20 /* Main.storyboard */,
 				E47F0649206A3EA800AB7F20 /* Info.plist */,
@@ -155,10 +181,35 @@
 			path = Concretion;
 			sourceTree = "<group>";
 		};
+		E4C6FDCA207A31A400AAE87B /* yleSearchTests */ = {
+			isa = PBXGroup;
+			children = (
+				E4C6FDD6207A4E5B00AAE87B /* Data */,
+				E4C6FDCD207A31A400AAE87B /* Info.plist */,
+				E4C6FDD3207A3CF200AAE87B /* YleJSONParserTests.swift */,
+			);
+			path = yleSearchTests;
+			sourceTree = "<group>";
+		};
+		E4C6FDD5207A49E500AAE87B /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				E46B02E620778287009773AA /* Logo-iOS.png */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		E4C6FDD6207A4E5B00AAE87B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				E4C6FDD9207A4ED900AAE87B /* test.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		E4CBD2F3206BA86B0055BAD9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E46B02E52077803D009773AA /* Networking */,
 				E46B02E320777ED4009773AA /* TvProgramm.swift */,
 			);
 			path = Model;
@@ -184,19 +235,43 @@
 			productReference = E47F063A206A3EA800AB7F20 /* yleSearch.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E4C6FDC8207A31A400AAE87B /* yleSearchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4C6FDD2207A31A400AAE87B /* Build configuration list for PBXNativeTarget "yleSearchTests" */;
+			buildPhases = (
+				E4C6FDC5207A31A400AAE87B /* Sources */,
+				E4C6FDC6207A31A400AAE87B /* Frameworks */,
+				E4C6FDC7207A31A400AAE87B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4C6FDCF207A31A400AAE87B /* PBXTargetDependency */,
+			);
+			name = yleSearchTests;
+			productName = yleSearchTests;
+			productReference = E4C6FDC9207A31A400AAE87B /* yleSearchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		E47F0632206A3EA800AB7F20 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Oleksandr Shcherbonos";
 				TargetAttributes = {
 					E47F0639206A3EA800AB7F20 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+					};
+					E4C6FDC8207A31A400AAE87B = {
+						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E47F0639206A3EA800AB7F20;
 					};
 				};
 			};
@@ -214,6 +289,7 @@
 			projectRoot = "";
 			targets = (
 				E47F0639206A3EA800AB7F20 /* yleSearch */,
+				E4C6FDC8207A31A400AAE87B /* yleSearchTests */,
 			);
 		};
 /* End PBXProject section */
@@ -227,6 +303,14 @@
 				E47F0648206A3EA800AB7F20 /* LaunchScreen.storyboard in Resources */,
 				E47F0645206A3EA800AB7F20 /* Assets.xcassets in Resources */,
 				E47F0643206A3EA800AB7F20 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4C6FDC7207A31A400AAE87B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4C6FDDA207A4ED900AAE87B /* test.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,7 +337,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E4C6FDC5207A31A400AAE87B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4C6FDD4207A3CF200AAE87B /* YleJSONParserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E4C6FDCF207A31A400AAE87B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E47F0639206A3EA800AB7F20 /* yleSearch */;
+			targetProxy = E4C6FDCE207A31A400AAE87B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E47F0641206A3EA800AB7F20 /* Main.storyboard */ = {
@@ -412,6 +512,49 @@
 			};
 			name = Release;
 		};
+		E4C6FDD0207A31A400AAE87B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 63T6NDQ98H;
+				INFOPLIST_FILE = yleSearchTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shcherbonos.yleSearchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/yleSearch.app/yleSearch";
+			};
+			name = Debug;
+		};
+		E4C6FDD1207A31A400AAE87B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 63T6NDQ98H;
+				INFOPLIST_FILE = yleSearchTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shcherbonos.yleSearchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/yleSearch.app/yleSearch";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -429,6 +572,15 @@
 			buildConfigurations = (
 				E47F064D206A3EA800AB7F20 /* Debug */,
 				E47F064E206A3EA800AB7F20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4C6FDD2207A31A400AAE87B /* Build configuration list for PBXNativeTarget "yleSearchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4C6FDD0207A31A400AAE87B /* Debug */,
+				E4C6FDD1207A31A400AAE87B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

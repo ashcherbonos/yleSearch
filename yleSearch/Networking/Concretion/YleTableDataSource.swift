@@ -22,8 +22,9 @@ struct YleURLMaker: URLMaker {
 
 struct YleJSONParser: JSONParser {
     
-    func parse(_ jsonDictionary: JSONDictionary) -> [CellDataSource] {
-        guard let data = jsonDictionary["data"] as? [JSONDictionary] else { return []}
+    func parse(_ jsonData: Data) -> [CellDataSource]? {
+        guard let jsonDictionary = (try? JSONSerialization.jsonObject(with: jsonData, options: [])) as? JSONDictionary,
+            let data = jsonDictionary["data"] as? [JSONDictionary] else { return nil}
         return data.compactMap{parseProgramm($0)}
     }
     

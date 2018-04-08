@@ -64,7 +64,7 @@ class SearchViewModel {
         consumer.fill(withData: getData(for: index), imageLoader: imageLoader)
     }
     
-    func  didReceiveMemoryWarning() {
+    func  emptyMemory() {
         imageCache.empty()
     }
 }

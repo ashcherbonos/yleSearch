@@ -48,17 +48,12 @@ class TableDataSourceTemplate: TableDataSource{
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard error == nil,
                 let data = data,
-                let items = self?.parseJSON(data)
+                let items = self?.parser.parse(data)
                 else { return }
             self?.moreResultsAvaliable = (items.count > 0)
             self?.items += items
             DispatchQueue.main.async { self?.completion() }
         }
         task.resume()
-    }
-    
-    private func parseJSON(_ jsonData: Data) -> [CellDataSource]? {
-        guard let json = (try? JSONSerialization.jsonObject(with: jsonData, options: [])) as? JSONDictionary else { return nil }
-        return parser.parse(json)
     }
 }
