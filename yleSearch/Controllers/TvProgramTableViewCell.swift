@@ -8,12 +8,12 @@
 
 import UIKit
 
-class TvProgrammTableViewCell: UITableViewCell, DataConsumer {
+class TvProgramTableViewCell: UITableViewCell, DataConsumer {
     
     private var imageLoader: ImageLoader!
     
     func fill(withData dataSource: CellDataSource, imageLoader: ImageLoader){
-        let programm = dataSource as! TvProgramm
+        let programm = dataSource as! TvProgram
         textLabel!.text = programm.title
         detailTextLabel!.text = programm.description
         self.imageLoader = imageLoader

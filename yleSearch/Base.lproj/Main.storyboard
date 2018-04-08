@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="44" width="736" height="370"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultCell" textLabel="1tr-j3-FxO" detailTextLabel="Nc7-EZ-HDY" style="IBUITableViewCellStyleSubtitle" id="dsW-78-nAy" customClass="TvProgrammTableViewCell" customModule="yleSearch" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultCell" textLabel="1tr-j3-FxO" detailTextLabel="Nc7-EZ-HDY" style="IBUITableViewCellStyleSubtitle" id="dsW-78-nAy" customClass="TvProgramTableViewCell" customModule="yleSearch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="736" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dsW-78-nAy" id="PJI-ga-BJe">
@@ -75,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="63.200000000000003" y="68.815592203898049"/>
         </scene>
-        <!--Tv Programm Details View Controller-->
+        <!--Tv Program Details View Controller-->
         <scene sceneID="LaZ-cM-YfR">
             <objects>
-                <viewController id="vuH-cm-Ggs" customClass="TvProgrammDetailsViewController" customModule="yleSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vuH-cm-Ggs" customClass="TvProgramDetailsViewController" customModule="yleSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ldR-pc-k8X">
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -8,13 +8,12 @@
 
 import Foundation
 
-struct TvProgramm: CellDataSource {
+struct TvProgram: CellDataSource {
     let id: String
     let title: String
     let description: String
     let dataModified: String
     let type: String
-    let imageID: String?
     let previewImageURL: URL?
     let fullImageURL: URL?
 }

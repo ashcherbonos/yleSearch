@@ -28,7 +28,7 @@ struct YleJSONParser: JSONParser {
         return data.compactMap{parseProgramm($0)}
     }
     
-    private func parseProgramm(_ programmJSON: JSONDictionary) -> TvProgramm? {
+    private func parseProgramm(_ programmJSON: JSONDictionary) -> TvProgram? {
         guard let id = programmJSON["id"] as? String,
             let title = (programmJSON["itemTitle"] as? JSONDictionary)?["fi"] as? String,
             let description = (programmJSON["description"] as? JSONDictionary)?["fi"] as? String,
@@ -37,17 +37,16 @@ struct YleJSONParser: JSONParser {
             let imageID = (programmJSON["image"] as? JSONDictionary)?["id"] as? String,
             let imageAvailable = (programmJSON["image"] as? JSONDictionary)?["available"] as? Bool
             else { return nil }
-        return TvProgramm(id: id,
+        return TvProgram(id: id,
                           title: title,
                           description: description,
                           dataModified: dataModified,
                           type: type,
-                          imageID: imageAvailable ? imageID : nil,
                           previewImageURL: previewImageURL(for: imageID),
                           fullImageURL: fullImageURL(for: imageID))
     }
     
-    func previewImageURL(for imageID: String?) -> URL? {
+    private func previewImageURL(for imageID: String?) -> URL? {
         guard let imageID = imageID else { return nil }
         let width = AppConstants.previewImageFullSize
         let height = width
@@ -57,7 +56,7 @@ struct YleJSONParser: JSONParser {
         return URL(string: urlString)
     }
     
-    func fullImageURL(for imageID: String?) -> URL? {
+    private func fullImageURL(for imageID: String?) -> URL? {
         guard let imageID = imageID else { return nil }
         let width = deviceScreenSmollerSideSize
         let height = width
@@ -69,7 +68,7 @@ struct YleJSONParser: JSONParser {
     }
     
     private var deviceScreenSmollerSideSize: Int {
-        return Int(min(UIScreen.main.bounds.height, UIScreen.main.bounds.height))
+        return Int(min(UIScreen.main.bounds.height, UIScreen.main.bounds.width))
     }
 }
 

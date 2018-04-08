@@ -18,10 +18,9 @@ protocol DataConsumer {
 
 class SearchViewModel {
 
-    // MARK: - Dependency Managment
-    typealias ConcreteSourcerFactory = YleTableDataSourcerFactory
-    typealias ConcreteImageLoader = ImageLoaderWithFadeIn
-    typealias ConcreteImageCacher = ImageCache
+    typealias ConcreteSourcerFactory = AppConstants.Dependencies.ConcreteSourcerFactory
+    typealias ConcreteImageLoader = AppConstants.Dependencies.ConcreteImageLoader
+    typealias ConcreteImageCacher = AppConstants.Dependencies.ConcreteImageCacher
     
     var dataCount: Int { return dataSource.count}
     var dataLastIndex: Int { return dataCount - 1 }
