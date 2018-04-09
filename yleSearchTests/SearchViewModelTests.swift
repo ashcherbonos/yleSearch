@@ -120,7 +120,6 @@ class SearchViewModelTests: XCTestCase {
         mvvmUnderTest.fill(consumer: testDataConsumer, withIndex: 0)
         wait(for: [expectationDataConsumerFilled], timeout: 5.0)
         // Assert
-        print("mvvmUnderTest.dataCount = \(mvvmUnderTest.dataCount)")
         XCTAssertNotNil(testDataConsumer.filledData)
     }
 }
