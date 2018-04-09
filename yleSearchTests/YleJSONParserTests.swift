@@ -109,21 +109,9 @@ class YleJSONParserTests: XCTestCase {
         XCTAssertEqual(expectedPreviewImageURL, resultPreviewImageURL)
     }
     
-    func test_parse_returnExpectedFullImageURL_inPortraitMode(){
+    func test_parse_returnExpectedFullImageURL(){
         // Arrange
-        XCUIDevice.shared.orientation = .portrait
-        let size = Int(UIScreen.main.bounds.width)
-        let expectedFullImageURL = URL(string: "https://images.cdn.yle.fi/image/upload/w_\(size),h_\(size),c_fill/13-1-3391628-1522918692260.png")
-        // Act
-        let resultFullImageURL = firstItem?.fullImageURL
-        // Assert
-        XCTAssertEqual(expectedFullImageURL, resultFullImageURL)
-    }
-    
-    func test_parse_returnExpectedFullImageURL_inLandscapeMode(){
-        // Arrange
-        XCUIDevice.shared.orientation = .landscapeLeft
-        let size = Int(UIScreen.main.bounds.height)
+        let size = Int(min(UIScreen.main.bounds.width, UIScreen.main.bounds.height))
         let expectedFullImageURL = URL(string: "https://images.cdn.yle.fi/image/upload/w_\(size),h_\(size),c_fill/13-1-3391628-1522918692260.png")
         // Act
         let resultFullImageURL = firstItem?.fullImageURL

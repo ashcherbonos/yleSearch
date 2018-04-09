@@ -13,7 +13,6 @@ protocol ImageLoaderDelegate: class {
 }
 
 protocol ImageLoader {
-    init(cache: ImageCacher)
     var delegate: ImageLoaderDelegate? {get set}
     func load( url: URL?, intoImageView: UIImageView)
     func makeStub(for: UIImageView, withLabel: String)
@@ -24,19 +23,22 @@ class ImageLoaderWithFadeIn: ImageLoader {
     weak var delegate: ImageLoaderDelegate?
     
     private let cache: ImageCacher
+    private let networkingManager: NetworkingManager
     
-    required init(cache: ImageCacher) {
+    required init(cache: ImageCacher, networkingManager: NetworkingManager) {
         self.cache = cache
+        self.networkingManager = networkingManager
     }
     
-    func load( url: URL?, intoImageView imageView: UIImageView){
+    func load( url: URL?, intoImageView imageView: UIImageView) {
         guard let url = url else {return}
         if let cachedImage = cache[url] {
             imageView.image = cachedImage
             delegate?.imageDidLoad(success: true)
             return
         }
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        
+        networkingManager.resumeDataTask(with: url) { data, response, error in
             guard error == nil,
                 let data = data,
                 let image = UIImage(data: data)
@@ -53,7 +55,6 @@ class ImageLoaderWithFadeIn: ImageLoader {
                 self?.delegate?.imageDidLoad(success: true)
             }
         }
-        task.resume()
     }
     
     func makeStub(for imageView: UIImageView, withLabel label: String){

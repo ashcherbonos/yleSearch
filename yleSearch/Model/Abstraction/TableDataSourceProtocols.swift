@@ -12,7 +12,7 @@ typealias JSONDictionary = [String: Any]
 
 protocol CellDataSource {}
 
-protocol URLMaker  {
+protocol URLMaker {
     func makeURL(query: String, offset: Int, limit: Int) -> URL?
 }
 

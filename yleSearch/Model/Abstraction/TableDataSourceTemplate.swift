@@ -11,9 +11,10 @@ import Foundation
 struct TableDataSourceFactoryTemplate: TableDataSourcerMaker {
     let urlMaker: URLMaker
     let parser: JSONParser
+    let networkManager: NetworkingManager
     
     func make(query: String, completion: @escaping () -> ()) ->  TableDataSource {
-        return TableDataSourceTemplate (searchTerm: query, urlMaker: urlMaker, parser: parser, completion:completion)
+        return TableDataSourceTemplate (searchTerm: query, urlMaker: urlMaker, parser: parser, networkManager: networkManager, completion:completion)
     }
 }
 
@@ -30,13 +31,15 @@ class TableDataSourceTemplate: TableDataSource{
     private let searchTerm: String
     private let parser: JSONParser
     private let urlMaker: URLMaker
+    private let networkManager: NetworkingManager
     private let completion: () -> ()
     private var moreResultsAvaliable = true;
     
-    init(searchTerm: String, urlMaker: URLMaker, parser: JSONParser, completion: @escaping () -> ()) {
+    init(searchTerm: String, urlMaker: URLMaker, parser: JSONParser, networkManager: NetworkingManager, completion: @escaping () -> ()) {
         self.searchTerm = searchTerm
         self.urlMaker = urlMaker
         self.parser = parser
+        self.networkManager = networkManager
         self.completion = completion
         self.items = []
     }
@@ -45,7 +48,7 @@ class TableDataSourceTemplate: TableDataSource{
         guard moreResultsAvaliable,
             let url = urlMaker.makeURL(query: searchTerm, offset: items.count, limit: amount)
             else { return }
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+        networkManager.resumeDataTask(with: url) { [weak self] data, response, error in
             guard error == nil,
                 let data = data,
                 let items = self?.parser.parse(data)
@@ -54,6 +57,5 @@ class TableDataSourceTemplate: TableDataSource{
             self?.items += items
             DispatchQueue.main.async { self?.completion() }
         }
-        task.resume()
     }
 }

@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E4651DAD207AB6070010821B /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4651DAC207AB6070010821B /* NetworkingManager.swift */; };
+		E4165BD2207ABF63001B9703 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4165BD1207ABF63001B9703 /* NetworkingManager.swift */; };
 		E46B02E02076A2DA009773AA /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46B02DF2076A2DA009773AA /* SearchViewModel.swift */; };
 		E46B02E22076CED7009773AA /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46B02E12076CED7009773AA /* AppConstants.swift */; };
 		E46B02E420777ED4009773AA /* TvProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46B02E320777ED4009773AA /* TvProgram.swift */; };
-		E46B02E720778287009773AA /* Logo-iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = E46B02E620778287009773AA /* Logo-iOS.png */; };
 		E47F063E206A3EA800AB7F20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47F063D206A3EA800AB7F20 /* AppDelegate.swift */; };
 		E47F0640206A3EA800AB7F20 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47F063F206A3EA800AB7F20 /* SearchViewController.swift */; };
 		E47F0643206A3EA800AB7F20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E47F0641206A3EA800AB7F20 /* Main.storyboard */; };
@@ -24,9 +23,14 @@
 		E4A0D89E20738A09002EB008 /* UIImage + PreviewStubImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0D89D20738A09002EB008 /* UIImage + PreviewStubImage.swift */; };
 		E4ACEE7F2078D8CE005AD4B6 /* TvProgramTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ACEE7E2078D8CE005AD4B6 /* TvProgramTableViewCell.swift */; };
 		E4ACEE8120791CD6005AD4B6 /* ImageCach.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ACEE8020791CD6005AD4B6 /* ImageCach.swift */; };
+		E4BF62C8207B71AA0090665A /* Logo-iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = E4BF62C7207B71AA0090665A /* Logo-iOS.png */; };
+		E4BF62CA207B71BE0090665A /* testImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E4BF62C9207B71BE0090665A /* testImage.png */; };
+		E4BF62CC207B77550090665A /* NetworkingManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF62CB207B77550090665A /* NetworkingManagerMock.swift */; };
+		E4BF62CE207B8F2C0090665A /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BF62CD207B8F2C0090665A /* SearchViewModelTests.swift */; };
 		E4C6FDD4207A3CF200AAE87B /* YleJSONParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C6FDD3207A3CF200AAE87B /* YleJSONParserTests.swift */; };
 		E4C6FDDA207A4ED900AAE87B /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = E4C6FDD9207A4ED900AAE87B /* test.json */; };
 		E4CBD2F7206D53820055BAD9 /* TvProgramDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CBD2F6206D53820055BAD9 /* TvProgramDetailsViewController.swift */; };
+		E4FA22E0207B589C00EC28D4 /* ImageLoaderWithFadeInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FA22DF207B589C00EC28D4 /* ImageLoaderWithFadeInTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,11 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E4651DAC207AB6070010821B /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		E4165BD1207ABF63001B9703 /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		E46B02DF2076A2DA009773AA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		E46B02E12076CED7009773AA /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		E46B02E320777ED4009773AA /* TvProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvProgram.swift; sourceTree = "<group>"; };
-		E46B02E620778287009773AA /* Logo-iOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo-iOS.png"; sourceTree = "<group>"; };
 		E47F063A206A3EA800AB7F20 /* yleSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yleSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E47F063D206A3EA800AB7F20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E47F063F206A3EA800AB7F20 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -59,11 +62,16 @@
 		E4A0D89D20738A09002EB008 /* UIImage + PreviewStubImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + PreviewStubImage.swift"; sourceTree = "<group>"; };
 		E4ACEE7E2078D8CE005AD4B6 /* TvProgramTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvProgramTableViewCell.swift; sourceTree = "<group>"; };
 		E4ACEE8020791CD6005AD4B6 /* ImageCach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCach.swift; sourceTree = "<group>"; };
+		E4BF62C7207B71AA0090665A /* Logo-iOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo-iOS.png"; sourceTree = "<group>"; };
+		E4BF62C9207B71BE0090665A /* testImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testImage.png; sourceTree = "<group>"; };
+		E4BF62CB207B77550090665A /* NetworkingManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerMock.swift; sourceTree = "<group>"; };
+		E4BF62CD207B8F2C0090665A /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		E4C6FDC9207A31A400AAE87B /* yleSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yleSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C6FDCD207A31A400AAE87B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4C6FDD3207A3CF200AAE87B /* YleJSONParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YleJSONParserTests.swift; sourceTree = "<group>"; };
 		E4C6FDD9207A4ED900AAE87B /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		E4CBD2F6206D53820055BAD9 /* TvProgramDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvProgramDetailsViewController.swift; sourceTree = "<group>"; };
+		E4FA22DF207B589C00EC28D4 /* ImageLoaderWithFadeInTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderWithFadeInTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +105,7 @@
 		E46B02E52077803D009773AA /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				E4ACEE7C2078D55C005AD4B6 /* Abstraction */,
-				E4ACEE7D2078D56B005AD4B6 /* Concretion */,
-				E4651DAC207AB6070010821B /* NetworkingManager.swift */,
+				E4165BD1207ABF63001B9703 /* NetworkingManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -190,6 +196,9 @@
 				E4C6FDD6207A4E5B00AAE87B /* Data */,
 				E4C6FDCD207A31A400AAE87B /* Info.plist */,
 				E4C6FDD3207A3CF200AAE87B /* YleJSONParserTests.swift */,
+				E4FA22DF207B589C00EC28D4 /* ImageLoaderWithFadeInTests.swift */,
+				E4BF62CB207B77550090665A /* NetworkingManagerMock.swift */,
+				E4BF62CD207B8F2C0090665A /* SearchViewModelTests.swift */,
 			);
 			path = yleSearchTests;
 			sourceTree = "<group>";
@@ -197,7 +206,7 @@
 		E4C6FDD5207A49E500AAE87B /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
-				E46B02E620778287009773AA /* Logo-iOS.png */,
+				E4BF62C7207B71AA0090665A /* Logo-iOS.png */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -205,6 +214,7 @@
 		E4C6FDD6207A4E5B00AAE87B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				E4BF62C9207B71BE0090665A /* testImage.png */,
 				E4C6FDD9207A4ED900AAE87B /* test.json */,
 			);
 			path = Data;
@@ -213,6 +223,8 @@
 		E4CBD2F3206BA86B0055BAD9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E4ACEE7C2078D55C005AD4B6 /* Abstraction */,
+				E4ACEE7D2078D56B005AD4B6 /* Concretion */,
 				E46B02E320777ED4009773AA /* TvProgram.swift */,
 			);
 			path = Model;
@@ -302,7 +314,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E46B02E720778287009773AA /* Logo-iOS.png in Resources */,
+				E4BF62C8207B71AA0090665A /* Logo-iOS.png in Resources */,
 				E47F0648206A3EA800AB7F20 /* LaunchScreen.storyboard in Resources */,
 				E47F0645206A3EA800AB7F20 /* Assets.xcassets in Resources */,
 				E47F0643206A3EA800AB7F20 /* Main.storyboard in Resources */,
@@ -314,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4C6FDDA207A4ED900AAE87B /* test.json in Resources */,
+				E4BF62CA207B71BE0090665A /* testImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +350,7 @@
 				E47F063E206A3EA800AB7F20 /* AppDelegate.swift in Sources */,
 				E46B02E22076CED7009773AA /* AppConstants.swift in Sources */,
 				E46B02E420777ED4009773AA /* TvProgram.swift in Sources */,
-				E4651DAD207AB6070010821B /* NetworkingManager.swift in Sources */,
+				E4165BD2207ABF63001B9703 /* NetworkingManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +358,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4FA22E0207B589C00EC28D4 /* ImageLoaderWithFadeInTests.swift in Sources */,
+				E4BF62CC207B77550090665A /* NetworkingManagerMock.swift in Sources */,
+				E4BF62CE207B8F2C0090665A /* SearchViewModelTests.swift in Sources */,
 				E4C6FDD4207A3CF200AAE87B /* YleJSONParserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

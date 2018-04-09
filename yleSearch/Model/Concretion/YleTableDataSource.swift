@@ -74,7 +74,11 @@ struct YleJSONParser: JSONParser {
 
 struct YleTableDataSourcerFactory: TableDataSourcerMaker {
     
-    private let factory = TableDataSourceFactoryTemplate(urlMaker: YleURLMaker(), parser: YleJSONParser())
+    private let factory: TableDataSourcerMaker
+    
+    init(networkManager: NetworkingManager){
+        factory = TableDataSourceFactoryTemplate(urlMaker: YleURLMaker(), parser: YleJSONParser(), networkManager: networkManager)
+    }
     
     func make(query: String, completion: @escaping () -> ()) ->  TableDataSource {
         return factory.make(query: query, completion:completion)

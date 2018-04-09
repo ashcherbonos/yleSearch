@@ -14,6 +14,7 @@ struct AppConstants {
         typealias ConcreteSourcerFactory = YleTableDataSourcerFactory
         typealias ConcreteImageLoader = ImageLoaderWithFadeIn
         typealias ConcreteImageCacher = ImageCache
+        typealias ConcreteNetworkingManager = NetworkingManagerShared
     }
     
     static let yleAppKey = "app_id=73f7299c&app_key=41a235aabc2fc3c4f9bba2627cca97bc"

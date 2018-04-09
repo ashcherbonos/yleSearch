@@ -21,20 +21,25 @@ class SearchViewModel {
     typealias ConcreteSourcerFactory = AppConstants.Dependencies.ConcreteSourcerFactory
     typealias ConcreteImageLoader = AppConstants.Dependencies.ConcreteImageLoader
     typealias ConcreteImageCacher = AppConstants.Dependencies.ConcreteImageCacher
+    typealias ConcreteNetworkingManager = AppConstants.Dependencies.ConcreteNetworkingManager
     
     var dataCount: Int { return dataSource.count}
     var dataLastIndex: Int { return dataCount - 1 }
     var isReady: Bool { return !loadingData }
     
     private weak var delegate: SearchViewModelDelegate?
-    private let dataSourceFactory:TableDataSourcerMaker = ConcreteSourcerFactory()
-    private var dataSource: TableDataSource = TableDataSourceNullObject()
+    private let networkManager: NetworkingManager
+    private let dataSourceFactory:TableDataSourcerMaker
+    private var dataSource: TableDataSource
     private var loadingData = false
     private let imageCache: ImageCacher
     
     init(delegate: SearchViewModelDelegate){
         self.delegate = delegate
+        dataSource = TableDataSourceNullObject()
         imageCache = ConcreteImageCacher()
+        networkManager =  ConcreteNetworkingManager()
+        dataSourceFactory = ConcreteSourcerFactory(networkManager: networkManager)
     }
     
     func search(for query: String) {
@@ -59,7 +64,7 @@ class SearchViewModel {
     }
     
     func fill(consumer: DataConsumer, withIndex index: Int){
-        let imageLoader = ConcreteImageLoader(cache: imageCache)
+        let imageLoader = ConcreteImageLoader(cache: imageCache, networkingManager: networkManager)
         consumer.fill(withData: getData(for: index), imageLoader: imageLoader)
     }
     
