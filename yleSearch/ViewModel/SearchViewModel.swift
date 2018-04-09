@@ -17,29 +17,26 @@ protocol DataConsumer {
 }
 
 class SearchViewModel {
-
-    typealias ConcreteSourcerFactory = AppConstants.Dependencies.ConcreteSourcerFactory
-    typealias ConcreteImageLoader = AppConstants.Dependencies.ConcreteImageLoader
-    typealias ConcreteImageCacher = AppConstants.Dependencies.ConcreteImageCacher
-    typealias ConcreteNetworkingManager = AppConstants.Dependencies.ConcreteNetworkingManager
-    
+  
     var dataCount: Int { return dataSource.count}
     var dataLastIndex: Int { return dataCount - 1 }
     var isReady: Bool { return !loadingData }
     
-    private weak var delegate: SearchViewModelDelegate?
-    private let networkManager: NetworkingManager
+    weak var delegate: SearchViewModelDelegate?
     private let dataSourceFactory:TableDataSourcerMaker
-    private var dataSource: TableDataSource
     private var loadingData = false
-    private let imageCache: ImageCacher
+    private let imageLoaderFactory: ImageLoaderMaker
+    private let cache: ImageCacher
     
-    init(delegate: SearchViewModelDelegate){
-        self.delegate = delegate
+    // MARK: - Model
+    private var dataSource: TableDataSource
+    
+    init(delegate: SearchViewModelDelegate, dataSourceFactory: TableDataSourcerMaker, imageLoaderFactory: ImageLoaderMaker, cache: ImageCacher){
         dataSource = TableDataSourceNullObject()
-        imageCache = ConcreteImageCacher()
-        networkManager =  ConcreteNetworkingManager()
-        dataSourceFactory = ConcreteSourcerFactory(networkManager: networkManager)
+        self.dataSourceFactory = dataSourceFactory
+        self.imageLoaderFactory = imageLoaderFactory
+        self.cache = cache
+        self.delegate = delegate
     }
     
     func search(for query: String) {
@@ -50,25 +47,21 @@ class SearchViewModel {
         loadData()
     }
     
-    func getData(for index: Int) -> CellDataSource {
-        return dataSource[index]
-    }
-    
     func loadMoreData() {
         loadData()
+    }
+    
+    func fill(consumer: DataConsumer, withIndex index: Int){
+        let imageLoader = imageLoaderFactory.make()
+        consumer.fill(withData: dataSource[index], imageLoader: imageLoader)
+    }
+    
+    func  emptyMemory() {
+        cache.empty()
     }
     
     private func loadData() {
         loadingData = true
         dataSource.loadData(amount: AppConstants.searchLimit)
-    }
-    
-    func fill(consumer: DataConsumer, withIndex index: Int){
-        let imageLoader = ConcreteImageLoader(cache: imageCache, networkingManager: networkManager)
-        consumer.fill(withData: getData(for: index), imageLoader: imageLoader)
-    }
-    
-    func  emptyMemory() {
-        imageCache.empty()
     }
 }

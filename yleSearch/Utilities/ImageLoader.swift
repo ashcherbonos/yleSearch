@@ -18,6 +18,25 @@ protocol ImageLoader {
     func makeStub(for: UIImageView, withLabel: String)
 }
 
+protocol ImageLoaderMaker {
+    func make()-> ImageLoader
+}
+
+struct ImageLoaderWithFadeInFactory: ImageLoaderMaker {
+    
+    private let cache: ImageCacher
+    private let networkingManager: NetworkingManager
+    
+    init(cache: ImageCacher, networkingManager: NetworkingManager) {
+        self.cache = cache
+        self.networkingManager = networkingManager
+    }
+    
+    func make() -> ImageLoader {
+        return ImageLoaderWithFadeIn(cache: cache, networkingManager: networkingManager)
+    }
+}
+
 class ImageLoaderWithFadeIn: ImageLoader {
     
     weak var delegate: ImageLoaderDelegate?
@@ -25,7 +44,7 @@ class ImageLoaderWithFadeIn: ImageLoader {
     private let cache: ImageCacher
     private let networkingManager: NetworkingManager
     
-    required init(cache: ImageCacher, networkingManager: NetworkingManager) {
+    init(cache: ImageCacher, networkingManager: NetworkingManager) {
         self.cache = cache
         self.networkingManager = networkingManager
     }

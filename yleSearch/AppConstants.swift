@@ -11,10 +11,7 @@ import UIKit
 struct AppConstants {
     
     struct Dependencies {
-        typealias ConcreteSourcerFactory = YleTableDataSourcerFactory
-        typealias ConcreteImageLoader = ImageLoaderWithFadeIn
-        typealias ConcreteImageCacher = ImageCache
-        typealias ConcreteNetworkingManager = NetworkingManagerShared
+        typealias SearchViewModelBuilder = YleSearchViewModelBuilder
     }
     
     static let yleAppKey = "app_id=73f7299c&app_key=41a235aabc2fc3c4f9bba2627cca97bc"

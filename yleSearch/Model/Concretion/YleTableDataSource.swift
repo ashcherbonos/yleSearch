@@ -63,7 +63,6 @@ struct YleJSONParser: JSONParser {
         let fillMode = "c_fill"
         let imageFormat = ".png"
         let urlString = "https://images.cdn.yle.fi/image/upload/w_\(width),h_\(height),\(fillMode)/\(imageID)\(imageFormat)"
-        print("fullImageURL = \(urlString)")
         return URL(string: urlString)
     }
     

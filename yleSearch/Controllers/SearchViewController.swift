@@ -11,11 +11,14 @@ import UIKit
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    lazy var viewModel = SearchViewModel(delegate: self)
+    
+    var viewModel: SearchViewModel!
+    let viewModelBuilder = AppConstants.Dependencies.SearchViewModelBuilder()
     private var searchController: UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel = viewModelBuilder.make(delegate: self)
         makeSearchBarInNavigationBar()
     }
 
