@@ -48,11 +48,11 @@ class SearchViewModelTests: XCTestCase {
     }
     
     
-    func test_unitTesting_worksCorrect() {
+    func testUnitTestingWorksCorrect() {
         XCTAssertTrue(true)
     }
     
-    func test_delegate_notRetained() {
+    func testDelegateNotRetained() {
         // Arrange
         var delegate = DelegateMock()
         // Act
@@ -62,7 +62,7 @@ class SearchViewModelTests: XCTestCase {
         XCTAssertNil(mvvmUnderTest.delegate)
     }
     
-    func test_dataCount_isEmptyAtStart(){
+    func testDataCountIsEmptyAtStart(){
         // Arrange
         let expectedDataCount = 0
         // Act
@@ -72,7 +72,7 @@ class SearchViewModelTests: XCTestCase {
         XCTAssertEqual(returnedDataCount, expectedDataCount)
     }
     
-    func test_search_returnExpectedDataAmount(){
+    func testSearchReturnExpectedDataAmount(){
         // Arrange
         let expectedDataCount = 2
         let expectation = XCTestExpectation(description: "handler executed")
@@ -86,7 +86,7 @@ class SearchViewModelTests: XCTestCase {
         XCTAssertEqual(returnedDataCount, expectedDataCount)
     }
     
-    func test_loadMoreData_returnExpectedDataAmount(){
+    func testLoadMoreDataReturnExpectedDataAmount(){
         // Arrange
         let expectedDataCount = 4
         let firstExpectation = XCTestExpectation(description: "handler executed once")
@@ -105,7 +105,7 @@ class SearchViewModelTests: XCTestCase {
         XCTAssertEqual(returnedDataCount, expectedDataCount)
     }
     
-    func test_fill_fillDataConsumer() {
+    func testFillDataConsumer() {
         // Arrange
         let expectedDataCount = 2
         let expectationMVVMLoadData = XCTestExpectation(description: "MVVM load data")

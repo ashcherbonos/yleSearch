@@ -11,11 +11,11 @@ import XCTest
 
 class String_asDateTests: XCTestCase {
     
-    func test_unitTesting_worksCorrect() {
+    func testUnitTestingWorksCorrect() {
         XCTAssertTrue(true)
     }
     
-    func test_String_asDate_returnExpectedSeconds() {
+    func testStringAsDateReturnExpectedSeconds() {
         for second in 0...59 {
             // Arrange
             let rawDateString = "1970-01-01T00:00:\(second).000+00:00"
@@ -27,7 +27,7 @@ class String_asDateTests: XCTestCase {
         }
     }
     
-    func test_String_asDate_returnExpectedMinutes() {
+    func testStringAsDateReturnExpectedMinutes() {
         for minute in 0...59 {
             // Arrange
             let rawDateString = "1970-01-01T00:\(minute):00.000+00:00"
@@ -39,7 +39,7 @@ class String_asDateTests: XCTestCase {
         }
     }
     
-    func test_String_asDate_returnExpectedHours() {
+    func testStringAsDateReturnExpectedHours() {
         for hour in 0...23 {
             // Arrange
             let rawDateString = "1970-01-01T\(hour):00:00.000+00:00"
@@ -51,7 +51,7 @@ class String_asDateTests: XCTestCase {
         }
     }
     
-    func test_String_asDate_returnExpectedDays() {
+    func testStringAsDateReturnExpectedDays() {
         for day in 0...30 {
             // Arrange
             let rawDateString = "1970-01-\(day+1)T00:00:00.000+00:00"
@@ -63,7 +63,7 @@ class String_asDateTests: XCTestCase {
         }
     }
     
-    func test_String_asDate_returnExpectedMonths() {
+    func testStringAsDateReturnExpectedMonths() {
         // Arrange
         let rawDateString = "1970-02-01T00:00:00.000+00:00"
         let expectedDate = Date(timeIntervalSince1970: Double(31*24*3600))
@@ -73,7 +73,7 @@ class String_asDateTests: XCTestCase {
         XCTAssertEqual(resultDate, expectedDate)
     }
     
-    func test_String_asDate_returnExpectedYears() {
+    func testStringAsDateReturnExpectedYears() {
         // Arrange
         let rawDateString = "1971-01-01T00:00:00.000+00:00"
         let expectedDate = Date(timeIntervalSince1970: Double(365*24*3600))

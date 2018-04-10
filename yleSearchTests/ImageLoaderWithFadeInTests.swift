@@ -21,11 +21,11 @@ class ImageLoaderWithFadeInTests: XCTestCase {
         }
     }
     
-    func test_unitTesting_worksCorrect() {
+    func testUnitTestingWorksCorrect() {
         XCTAssertTrue(true)
     }
     
-    func test_delegate_notRetained() {
+    func testDelegateNotRetained() {
         // Arrange
         var delegate = ImageLoaderDelegateMock()
         let loadernUnderTest = ImageLoaderWithFadeIn(cache: ImageCache(), networkingManager: NetworkingManagerMock())
@@ -36,7 +36,7 @@ class ImageLoaderWithFadeInTests: XCTestCase {
         XCTAssertNil(loadernUnderTest.delegate)
     }
     
-    func test_makeStub_setImageIntoImageView() {
+    func testMakeStubSetImageIntoImageView() {
         // Arrange
         let loadernUnderTest = ImageLoaderWithFadeIn(cache: ImageCache(), networkingManager: NetworkingManagerMock())
         let imageView = UIImageView()
@@ -46,7 +46,7 @@ class ImageLoaderWithFadeInTests: XCTestCase {
         XCTAssertNotNil(imageView.image)
     }
     
-    func test_load_setImageIntoImageView() {
+    func testLoadSetImageIntoImageView() {
         // Arrange
         let expectation = XCTestExpectation(description: "handler executed")
         let delegate = ImageLoaderDelegateMock(expectation: expectation)

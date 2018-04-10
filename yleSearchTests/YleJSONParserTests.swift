@@ -35,18 +35,18 @@ class YleJSONParserTests: XCTestCase {
         firstItem = result?[0] as? TvProgram
     }
     
-    func test_unitTesting_worksCorrect() {
+    func testUnitTestingWorksCorrect() {
         XCTAssertTrue(true)
     }
     
-    func test_parse_returnNotNil(){
+    func testParseReturnNotNil(){
         // Arrange
         // Act
         // Assert
         XCTAssertNotNil(result)
     }
     
-    func test_parse_returnExpectedDataAmount(){
+    func testParseReturnExpectedDataAmount(){
         // Arrange
         let expectedCount = 2
         // Act
@@ -55,14 +55,14 @@ class YleJSONParserTests: XCTestCase {
         XCTAssertEqual(expectedCount, resultCount)
     }
     
-    func test_parse_returnTvProgramType(){
+    func testParseReturnTvProgramType(){
         // Arrange
         // Act
         // Assert
         XCTAssertNotNil(firstItem)
     }
     
-    func test_parse_returnExpectedTitle(){
+    func testParseReturnExpectedTitle(){
         // Arrange
         let expectedTitle = "Oktonautit ja merikilpikonnanpoikaset"
         // Act
@@ -71,7 +71,7 @@ class YleJSONParserTests: XCTestCase {
         XCTAssertEqual(expectedTitle, resultTitle)
     }
     
-    func test_parse_returnExpectedDescription(){
+    func testParseReturnExpectedDescription(){
         // Arrange
         let expectedDescription = "Oktonautit ja merikilpikonnanpoikaset. Suuri aalto uhkaa pieniä merikilpikonnanpoikasia."
         // Act
@@ -80,16 +80,18 @@ class YleJSONParserTests: XCTestCase {
         XCTAssertEqual(expectedDescription, resultDescription)
     }
     
-    func test_parse_returnExpectedDataModified(){
+    func testParseReturnExpectedDataModified(){
         // Arrange
-        let expectedDataModified = "2018-04-08T12:03:51.797+03:00"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss.SSS"
+        let expectedDataModified = formatter.date(from: "2018/04/08 12:03:51.797")
         // Act
         let resultDataModified = firstItem?.dataModified
         // Assert
         XCTAssertEqual(expectedDataModified, resultDataModified)
     }
     
-    func test_parse_returnExpectedProgramType(){
+    func testParseReturnExpectedProgramType(){
         // Arrange
         let expectedProgramType = "TVProgram"
         // Act
@@ -98,7 +100,7 @@ class YleJSONParserTests: XCTestCase {
         XCTAssertEqual(expectedProgramType, resultProgramType)
     }
     
-    func test_parse_returnExpectedPreviewImageURL(){
+    func testParseReturnExpectedPreviewImageURL(){
         // Arrange
         let size = AppConstants.previewImageFullSize
         let border = AppConstants.previewImageWhiteBorder
@@ -109,7 +111,7 @@ class YleJSONParserTests: XCTestCase {
         XCTAssertEqual(expectedPreviewImageURL, resultPreviewImageURL)
     }
     
-    func test_parse_returnExpectedFullImageURL(){
+    func testParseReturnExpectedFullImageURL(){
         // Arrange
         let size = Int(min(UIScreen.main.bounds.width, UIScreen.main.bounds.height))
         let expectedFullImageURL = URL(string: "https://images.cdn.yle.fi/image/upload/w_\(size),h_\(size),c_fill/13-1-3391628-1522918692260.png")
