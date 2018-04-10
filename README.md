@@ -2,7 +2,7 @@
 
 Test project in Swift.
 
-The task is to search programs from the Yle API: http://developer.yle.fi/tutorials.html 
+The task is to search programs from the Yle API:  http://developer.yle.fi/tutorials.html 
 1. The application should have an input field where the user can provide what programs to search for (a search query).
 2. The Finnish title of each result should be displayed in a scrollable list.
 3. When submitting a search, only the first 10 results should be retrieved from the API.
