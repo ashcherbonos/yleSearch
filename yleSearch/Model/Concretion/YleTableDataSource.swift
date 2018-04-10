@@ -38,12 +38,12 @@ struct YleJSONParser: JSONParser {
             let imageAvailable = (programmJSON["image"] as? JSONDictionary)?["available"] as? Bool
             else { return nil }
         return TvProgram(id: id,
-                          title: title,
-                          description: description,
-                          dataModified: dataModified,
-                          type: type,
-                          previewImageURL: previewImageURL(for: imageID),
-                          fullImageURL: fullImageURL(for: imageID))
+                         title: title,
+                         description: description,
+                         dataModified: dataModified.asDate ?? Date(),
+                         type: type,
+                         previewImageURL: imageAvailable ? previewImageURL(for: imageID) : nil,
+                         fullImageURL: imageAvailable ? fullImageURL(for: imageID) : nil )
     }
     
     private func previewImageURL(for imageID: String?) -> URL? {

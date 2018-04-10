@@ -12,7 +12,7 @@ struct TvProgram: CellDataSource {
     let id: String
     let title: String
     let description: String
-    let dataModified: String
+    let dataModified: Date
     let type: String
     let previewImageURL: URL?
     let fullImageURL: URL?

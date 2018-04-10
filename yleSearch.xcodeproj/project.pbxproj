@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E4165BD2207ABF63001B9703 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4165BD1207ABF63001B9703 /* NetworkingManager.swift */; };
+		E43FB1CB207CB4190053AE90 /* String+asDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43FB1CA207CB4190053AE90 /* String+asDateTests.swift */; };
+		E43FB1CD207CB9A50053AE90 /* String+asDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43FB1CC207CB9A50053AE90 /* String+asDate.swift */; };
+		E4694B33207BC59600B16C22 /* Date+timeAgoAsString.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4694B32207BC59600B16C22 /* Date+timeAgoAsString.swift */; };
 		E46B02E02076A2DA009773AA /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46B02DF2076A2DA009773AA /* SearchViewModel.swift */; };
 		E46B02E22076CED7009773AA /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46B02E12076CED7009773AA /* AppConstants.swift */; };
 		E46B02E420777ED4009773AA /* TvProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46B02E320777ED4009773AA /* TvProgram.swift */; };
@@ -31,6 +34,7 @@
 		E4C6FDD4207A3CF200AAE87B /* YleJSONParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C6FDD3207A3CF200AAE87B /* YleJSONParserTests.swift */; };
 		E4C6FDDA207A4ED900AAE87B /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = E4C6FDD9207A4ED900AAE87B /* test.json */; };
 		E4CBD2F7206D53820055BAD9 /* TvProgramDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CBD2F6206D53820055BAD9 /* TvProgramDetailsViewController.swift */; };
+		E4F8C299207CA216008FC0FE /* Date+timeAgoAsStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8C298207CA216008FC0FE /* Date+timeAgoAsStringTests.swift */; };
 		E4FA22E0207B589C00EC28D4 /* ImageLoaderWithFadeInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FA22DF207B589C00EC28D4 /* ImageLoaderWithFadeInTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +50,9 @@
 
 /* Begin PBXFileReference section */
 		E4165BD1207ABF63001B9703 /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		E43FB1CA207CB4190053AE90 /* String+asDateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+asDateTests.swift"; sourceTree = "<group>"; };
+		E43FB1CC207CB9A50053AE90 /* String+asDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+asDate.swift"; sourceTree = "<group>"; };
+		E4694B32207BC59600B16C22 /* Date+timeAgoAsString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+timeAgoAsString.swift"; sourceTree = "<group>"; };
 		E46B02DF2076A2DA009773AA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		E46B02E12076CED7009773AA /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		E46B02E320777ED4009773AA /* TvProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvProgram.swift; sourceTree = "<group>"; };
@@ -73,6 +80,7 @@
 		E4C6FDD3207A3CF200AAE87B /* YleJSONParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YleJSONParserTests.swift; sourceTree = "<group>"; };
 		E4C6FDD9207A4ED900AAE87B /* test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		E4CBD2F6206D53820055BAD9 /* TvProgramDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvProgramDetailsViewController.swift; sourceTree = "<group>"; };
+		E4F8C298207CA216008FC0FE /* Date+timeAgoAsStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+timeAgoAsStringTests.swift"; sourceTree = "<group>"; };
 		E4FA22DF207B589C00EC28D4 /* ImageLoaderWithFadeInTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderWithFadeInTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +108,8 @@
 				E4A0D89D20738A09002EB008 /* UIImage + PreviewStubImage.swift */,
 				E4860F35207238A2005B181A /* ImageLoader.swift */,
 				E4ACEE8020791CD6005AD4B6 /* ImageCach.swift */,
+				E4694B32207BC59600B16C22 /* Date+timeAgoAsString.swift */,
+				E43FB1CC207CB9A50053AE90 /* String+asDate.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -201,6 +211,8 @@
 				E4C6FDD3207A3CF200AAE87B /* YleJSONParserTests.swift */,
 				E4FA22DF207B589C00EC28D4 /* ImageLoaderWithFadeInTests.swift */,
 				E4BF62CB207B77550090665A /* NetworkingManagerMock.swift */,
+				E4F8C298207CA216008FC0FE /* Date+timeAgoAsStringTests.swift */,
+				E43FB1CA207CB4190053AE90 /* String+asDateTests.swift */,
 				E4BF62CD207B8F2C0090665A /* SearchViewModelTests.swift */,
 			);
 			path = yleSearchTests;
@@ -349,6 +361,8 @@
 				E4BF62D0207BA90F0090665A /* YleSearchViewModelBuilder.swift in Sources */,
 				E47F0650206A4C6300AB7F20 /* TableDataSourceTemplate.swift in Sources */,
 				E4860F3420711493005B181A /* YleTableDataSource.swift in Sources */,
+				E43FB1CD207CB9A50053AE90 /* String+asDate.swift in Sources */,
+				E4694B33207BC59600B16C22 /* Date+timeAgoAsString.swift in Sources */,
 				E4CBD2F7206D53820055BAD9 /* TvProgramDetailsViewController.swift in Sources */,
 				E4860F36207238A2005B181A /* ImageLoader.swift in Sources */,
 				E47F063E206A3EA800AB7F20 /* AppDelegate.swift in Sources */,
@@ -364,6 +378,8 @@
 			files = (
 				E4FA22E0207B589C00EC28D4 /* ImageLoaderWithFadeInTests.swift in Sources */,
 				E4BF62CC207B77550090665A /* NetworkingManagerMock.swift in Sources */,
+				E43FB1CB207CB4190053AE90 /* String+asDateTests.swift in Sources */,
+				E4F8C299207CA216008FC0FE /* Date+timeAgoAsStringTests.swift in Sources */,
 				E4BF62CE207B8F2C0090665A /* SearchViewModelTests.swift in Sources */,
 				E4C6FDD4207A3CF200AAE87B /* YleJSONParserTests.swift in Sources */,
 			);
