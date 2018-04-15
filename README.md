@@ -1,6 +1,7 @@
 # yleSearch
 
 Test project in Swift.
+(Same project in Objective-C: https://github.com/ashcherbonos/yleSearchObjC)
 
 The task is to search programs from the Yle API:  http://developer.yle.fi/tutorials.html 
 1. The application should have an input field where the user can provide what programs to search for (a search query).
